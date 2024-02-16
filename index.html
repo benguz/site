@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title>Ben Guzovsky</title>
+    <meta name="title" content="Ben Guzovsky">
+    <meta name="description" content="">
+    <!-- <meta property="og:url" content="https://doorstopped.org/">
+    <meta property="og:image" content="https://doorstopped.org/og.jpg">
+    <meta name="twitter:image" content="https://doorstopped.org/og.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630"> -->
+    <meta property="og:title" content=">Ben Guzovsky">
+    <meta property="og:description" content="">
+    <!-- <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://doorstopped.org/"> -->
+    <meta property="twitter:title" content=">Ben Guzovsky">
+    <meta property="twitter:description" content="">
+    <link href="/favicon.ico" rel="apple-touch-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <!-- include jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- include jQuery UI -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
+<script defer data-domain="benguzovsky.com" src="https://plausible.io/js/script.js"></script>
+<style>
+    * {
+        box-sizing: border-box;
+        position: relative;
+        min-width: 0;
+    }
+
+    body {
+        min-height: 100dvh;
+        max-width: 100%;
+        /* font-family: -apple-system, BlinkMacSystemFont, sans-serif; */
+        font-family: inter, sans-serif;
+        margin: 0;
+        display: flex;
+        background-color: #ffa588;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    h1, h2, h3, h4 {
+        text-wrap: balance
+    }
+
+    p {
+        text-wrap: pretty;
+        /* font-family: Lora, serif; */
+        color: white;
+        margin: 0;
+        margin-bottom: 5px;
+        font-size: 14pt;
+        line-height: 1.4;
+    }
+    h1, h2 {
+        font-size: 18pt;
+        font-weight:400;
+    }
+    a {
+        color: inherit;
+        /* font-family: Lora, serif; */
+        /* text-decoration: none; */
+    }
+    .demo-img {
+        border-radius: 2px;
+        margin: auto;
+    }
+/* 
+    img {
+        position: relative; 
+        animation: slideIn 1s ease 3s forwards;
+        width: 100%;
+        margin-top: 20%;
+        left: -20%;
+        height: auto;
+    }
+    #img-1 {
+        visibility: hidden; 
+
+    } */
+
+    @keyframes slideIn {
+        0% {
+            margin-top: 20%;
+            left: -20%;
+        }
+        /* 85% { 
+            margin-top: 7%;
+            left: 3%;
+        }*/
+        100% {
+            margin-top: 10%;
+            left: 0;
+        }
+    }
+
+    /* .feed {
+        width: 78%;
+        overflow: hidden;
+        padding: 10px;
+    }
+    .timeline {
+        width: 22%;
+        padding: 10px;
+        margin-left: 20px;
+    }
+    
+    .overlay-top,
+.overlay-bottom {
+    position: fixed;
+    -o-object-fit: cover;
+    object-fit: cover;
+    height: 12%;
+    width: 100%;
+    z-index: 2;
+    left: 0;
+    pointer-events: none;
+}
+
+.overlay-top {
+    top: -1px
+}
+
+.overlay-bottom {
+    bottom: 1px
+}
+
+.descriptor {
+    margin-top: 300px;
+}
+*/
+
+.intro {
+    position: absolute; top: 40vh; left: 10vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.choice {
+    border-radius: 15px;
+    background-color: transparent;
+    position: relative;
+    padding: 8px 12px;
+    margin-right: 10px;
+    border: 1px solid rgb(75, 75, 75);
+  -webkit-transition: color 0.3s;
+  -moz-transition: color 0.3s;
+  transition: color 0.3s;
+  overflow: hidden;
+  z-index: 2;
+}
+.choice::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: calc(-100% - 1px); /* Start from the left */
+    width: calc(100% + 1px);
+    height: 100%;
+    background-color: #474747; /* Color that slides over */
+    transition: left 0.3s;
+    border-radius: 10px; /* Same border radius as the button */
+    z-index: -1;
+}
+
+.choice:hover::before {
+    left: 0;
+}
+
+.choice:hover {
+    color: #fff; 
+}
+
+
+.item {
+    width: 100%; height: 25vh; background-color: #fce5dd
+}
+.item:first-of-type {
+    border-radius: 0px 20px 0px 0px;
+}
+
+.main-animate {
+    animation: mainOut 1.6s forwards;
+}
+
+.section-animate {
+    opacity: 0; /* Initially hidden */
+    animation: fadeIn 0.7s forwards;
+   /* animation-delay: 1.5s;  */
+}
+
+@keyframes mainOut {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+        clip-path: inset(0 0 0 0);
+    }
+    40% {
+        transform: scale(0.9);
+        opacity: 0.8;
+        clip-path: inset(0 0 0 0);
+    }
+    100% {
+        transform: scale(0.9);
+        opacity: 0.7;
+        clip-path: inset(0 0 0 100%);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.experiences {
+    display: flex; 
+    flex-direction: column; 
+    margin-top: 100vh; 
+    justify-content: center; align-items: center; width: 100%;
+}
+
+.experience {
+    display: flex; flex-direction: row; justify-content: space-between; align-items: center; width: 100%;
+    height: 100vh;
+}
+
+.experience p {
+    color: black;
+}
+
+.footer {
+    height: 50vh;
+    width: 100%;
+}
+ul {
+    padding-inline-start: 20px;
+}
+
+.arrow {
+    font-size: 30px; /* Adjust the size of the arrow */
+    color: white; /* Arrow color */
+    text-align: center;
+    cursor: pointer; /* Change cursor to indicate it's clickable */
+    animation: pulse 2.5s infinite;
+    position: absolute;
+    top: 92vh;
+    left: calc(50% - 15px);
+    opacity: 0;
+    animation-delay: 1.5s;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .intro {
+        left: 10px;
+    }
+/* 
+    .overlay-top,
+    .overlay-bottom {
+        height: 80px;
+        pointer-events: none;
+    } */
+} 
+</style>
+</head>
+<body>
+    <div class="main" id="main" style="background-color: #DCFCE7; border-radius: 0px 30px 30px 0px; width: 100%; margin: 0; min-height: 100%; ">
+        <div class="intro">
+            <h1>Inspiring agency is my deepest, most sustaining vocation. All my research, design, and code is towards that goal.</h1>
+            <div class="choices" style="display: flex; flex-direction: row; justify-content: flex-start; align-items: center;">
+                <button onclick="showSection('product')" class="choice">Product Design</button><button class="choice" onclick="showSection('writing')">Selected Writing</button><button class="choice" onclick="showSection('teaching')">Teaching</button>
+            </div>
+        </div>
+        <div style="position: absolute; bottom: 0.4em; right: 1.5em;">
+            <p style="font-size: 10pt; color: black">contact: guzovsky@princeton.edu</p>
+        </div>
+    </div>
+    <div class="section" id="product" style="display: none; opacity: 0; background-color: #ffa588; border-radius: 0px 30px 30px 0px; width: 100%; margin: 0; min-height: 100%; overflow: auto">
+        <div class="intro">
+            <h1 style="color: white">I rapidly prototype ideas and bringing them to life.</h1>
+        </div>
+        <div id="scroll-down-arrow" class="arrow">↓</div>
+        <div class="experiences" >
+            <div class="experience">
+                <div style="width: 35%; margin-left: 10vh; "><p style="font-family: Inter; font-weight: 500; color: black;"> Solo researched, coded, and designed <a href="https://fix.school" >fix.school</a>, showing high schoolers 100s of ways to change their school experience, no matter what they’re struggling with.
+                </p>
+                <ul>
+                    <li>Observed high school classes <a href="https://doorstopeducation.org/research">in 15 states</a></li>
+                    <li>Created 100 interactive, <a href="https://fix.school/search">digital resources</a></li>
+                    <li>Conducted 100 UX interviews and 90 beta tests</li>
+                    <li>Got 600k organic social media views</li>
+                </ul>
+            </div>
+                <div style="width: 65%; display: flex; margin-left: 20px">
+                    <img src="/images/doorstoplatest.gif" width="80%" height="auto" class="demo-img" />
+                </div>
+            </div>
+            <div class="experience">
+                <div style="width: 35%; margin-left: 10vh; "><p style="font-family: Inter; font-weight: 500; color: black;"> Built <a href="https://promptoctopus.com">Prompt Octopus</a>, a tool for rapid <a href="https://aws.amazon.com/what-is/prompt-engineering/">prompt engineering</a>. Compare as many prompts as you need, side by side (40-80 active users).
+                </p>
+                <ul>
+                    <li>Asynchronous function calls for speed</li>
+                    <li>Open Source on <a href="https://github.com/benguz/prompt-octopus">Github</a></li>
+                    <li>Comes with a pet octopus 🐙</li>
+                </ul>
+            </div>
+                <div style="width: 65%; display: flex; margin-left: 20px">
+                    <img src="/images/search.gif" width="80%" height="auto" class="demo-img"  />
+                </div>
+            </div>
+            <div class="experience">
+                <div style="width: 35%; margin-left: 10vh; "><p style="font-family: Inter; font-weight: 500; color: black;">Worked at Perrfy (now <a href="https://spekto.ai/" >Spekto</a>),  an early-stage web development startup.
+                </p>
+
+            </div>
+                <div style="width: 65%; display: flex; margin-left: 20px">
+                    <ul>
+                        <li style="max-width: 80%; margin: auto;">Roadmapped a pivot from B2C to B2B based on data-driven insights and UX interviews that boosted conversion rates by 40%.</a></li>
+                        <li style="max-width: 80%; margin: auto;">Mastered complex web development concepts to rewrite 100 pages of Perrfy website content from technical to user-friendly and write 40 pages of blog content.</li>
+                        <li style="max-width: 80%; margin: auto;">Managed 12 independent contractors, prioritizing programming, design, content, and marketing needs.</li>
+                    </ul>                </div>
+            </div>
+            <div class="experience">
+                <div style="width: 35%; margin-left: 10vh; "><p style="font-family: Inter; font-weight: 500; color: black;"> Interned as a researcher at Columbia University building Finesse: a context-dependent thesaurus for creative writers.
+                </p>
+                <ul>
+                    <li>Gives machine-learned suggestions that improve cadence and creativity</li>
+                    <li>Trained on the works of great writers</li>
+                    <li>Built in 2021, before AI was cool :)</li>
+                </ul>
+            </div>
+                <div style="width: 65%; display: flex; margin-left: 20px">
+                    <p style="width: 80%; margin: auto;">
+                        "Having such a broad impact on the course of a project takes skills ranging from communication and vulnerability – such as reaching out for help when stuck understanding something – to the technical aptitude needed to understand and master range of difficult tools, from Amazon Web Services to python and the mathematics and statistics needed to make sense of machine learning. "
+                        <br><br>– Jaan Altosaar, Postdoctoral Officer of Research at Columbia University</p>
+                </div>
+            </div>
+            <div class="experience">
+                <div style="width: 35%; margin-left: 10vh; "><p style="font-family: Inter; font-weight: 500; color: black;"> Side projects built to support friends and my campus community:
+                </p>
+                <ul>
+                    <li>My digital <a href="https://benguz.github.io/chess">chess teaching aid</a></li>
+                    <li>A <a href="https://fix.school/princeton">knowledge base</a> for Princeton students</li>
+                    <li>My <a href="https://fix.school/doorstops/10minutebreak">JS-powered productivity app</a></li>
+                    <li>On the right is my two-player incredibly cute <a href="https://digital-experience.onrender.com/blob">blob game</a> for friends and long distance lovebirds</li>
+                </ul>
+            </div>
+                <div style="width: 65%; display: flex; margin-left: 20px">
+                   <img class="demo-img" src="https://digital-experience.onrender.com/og.png" onclick="window.open('https://digital-experience.onrender.com/blob')">
+
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+
+        </div>
+
+    </div>
+    <div class="section" id="writing" style="display: none; opacity: 0; background-color: #cc79f0; border-radius: 0px 30px 30px 0px; width: 100%; margin: 0; min-height: 100%;">
+        <div class="intro">
+            <h1 style="color: white">I write on education, machine learning, and the evolution of historical method.</h1>
+        </div>
+        <div class="experiences">
+            <div class="experience">
+                <div style="width: 35%; margin-left: 10vh; ">
+                    <p><a href="/pdfs/Capablanca Defeats Marshall's Attack - Guzovsky.pdf">"Capablanca Defeats Marshall's Attack"</a> — Dec 2023</p>
+                </div>
+                <div style="width: 65%; display: flex; margin-left: 20px">
+                    <p style="width: 90%">"This is an absolutely superb final paper. The best of the lot, in my view. The chosen historical episode is rich in itself, and the question of the historicity of a chess game (with its loose "script" of possible gambits) is enchanting. Simply excellent. This paper expanded my thinking."
+                    <br><br>
+                    – D. Graham Burnett, Princeton History Professor
+                </p>
+
+                </div>
+            </div>
+            <div class="experience">
+                <div style="width: 35%; margin-left: 10vh; ">
+                    <p><a href="https://doorstopeducation.org/research/leveraged.pdf">"Learning, Leveraged by Students"</a> — Jan 2023</p>
+                </div>
+                <div style="width: 65%; display: flex; margin-left: 20px">
+                    <p style="width: 90%">"I spent high school staring out the window and waiting for lunch time. I felt like there was nothing I could change about school. When I grew up and learned some adult skills (identifying and advocating for my unmet needs), I realized there was so much I could’ve done to be happier and feel safer in school. Spending two minutes a day building a better relationship with my teachers would’ve made the hours I spent in their classes so much more bearable, but I only started doing this senior year. Nobody told me.
+                         <br><br>
+                    I know what I should’ve done differently, but I didn’t yet know what other students could do."
+                </p>
+
+
+                </div>
+            </div>
+            <div class="experience">
+                <div style="width: 35%; margin-left: 10vh; ">
+                    <p><a href="https://blog.benguzovsky.com/fall_junior_paper.pdf">"Weighted Internationalism in League of Nations Hiring Practices"</a> — Jan 2022</p>
+                </div>
+                <div style="width: 65%; display: flex; margin-left: 20px">
+                    <p style="width: 90%">"Nothing escapes his keen analytical gaze... He has immersed himself in an incredible volume of seemingly-dry historical sources and not only wrestled them into a clear and well-structured piece of writing, but also condensed them into a pithy but substantial interpretive formula... articulated with flair."
+                         <br><br>   
+                    – Natasha Wheatley, Princeton History Professor
+                </p>
+                
+
+
+                </div>
+            </div>
+        </div>
+        <!-- do the tiktok with a lot of views lol -->
+        <div class="footer">
+
+        </div>
+        <!--  -->
+    </div>
+    <div class="section" id="teaching" style="display: none; opacity: 0; background-color: #7396f7; border-radius: 0px 30px 30px 0px; width: 100%; margin: 0; min-height: 100%;">
+        <div class="intro">
+            <h1 style="color: white">I teach writing to kids, executives, and inspired senior citizens, I help non-technical folks learn to code, and I teach my friends chess. Once in a while, I'll work with students in the US and abroad to craft incredible college applications.</h1>
+        </div>
+        <!-- teaching AI/coding -->
+        <div class="footer">
+
+        </div>
+    </div>
+    <script>
+        addEventListener("DOMContentLoaded", (event) => {
+            sections = ['product', 'writing', 'teaching'];
+            let hash = window.location.hash.substring(1);
+            if (sections.includes(hash)) {
+                setTimeout(function() {
+                    showSection(hash);
+            }, 300);
+            }
+
+            document.getElementById('scroll-down-arrow').addEventListener('click', function() {
+            // Scroll smoothly to the next section
+                window.scrollBy({
+                    top: window.innerHeight, // Scroll down by one viewport height
+                    left: 0,
+                    behavior: 'smooth' // Smooth scroll
+                });
+            });
+        });
+        colors = {product: '#ffa588', writing: '#E9D0F4', teaching: '#cad6f7'};
+
+        function showSection(section) {
+            window.location.hash = section;
+            document.body.style.backgroundColor = colors[section];
+            document.getElementById('main').classList.add('main-animate');
+            setTimeout(function() {
+                // Change display to block before starting the animation
+                document.getElementById('main').style.display = 'none';
+                document.getElementById(section).style.display = 'block';
+                document.getElementById(section).classList.add('section-animate');
+            }, 1600);
+        }
+        
+    </script>
+    <!-- <div class="design" style="border-radius: 20px 20px 0px 0px; width: 50%; margin: 0; min-height: 100%; display: flex; flex-direction: column;">
+        <div class="item" style=""></div>
+        <div class="item" style="background-color: #cad6f7"></div>
+        <div class="item" style="background-color: #ebd2e2"></div>
+        <div class="item" style="background-color: #D2EBD8"></div>
+
+    </div> -->
+    <!-- <h2 style="position: absolute; top: 10px; left: 10px;">Projects</h2> -->
+    <!-- <img src="/images/overlay-bottom.svg" class="overlay-bottom show-mobile" alt="overlay"/> -->
+
+    <!-- <div class="feed">
+        <img src="/images/doorstop.png"/>
+
+        <img src="/images/webdev-demo.gif"/>
+    </div> -->
+    <!-- <div class="timeline">
+        <h1>Ben Guzovsky</h1>
+        <p><a href="/about">About</a></p>
+        <p><a href="https://github.com/benguz">Github</a></p>
+        <p><a href="https://twitter.com/BenGuzovsky">Twitter</a></p>
+        
+        <div class="descriptor">
+            <p>2022 – Incorporating an education nonprofit</p>
+            <p><a href="https://doorstopeducation.org">Learn more</a></p>
+        </div>
+    </div>
+    <script>
+        window.onload = function() {
+            var img = document.querySelector('#img-1');
+            img.style.visibility = 'visible';
+        };
+    </script> -->
+</body>
