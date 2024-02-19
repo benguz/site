@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-    <title>Ben Guzovsky</title>
+    <title>Ben Guzovsky - Portfolio</title>
     <meta name="title" content="Ben Guzovsky">
-    <meta name="description" content="">
+    <meta name="description" content="Ben Guzovsky's portfolio site containing projects, writing, and .">
     <!-- <meta property="og:url" content="https://doorstopped.org/">
     <meta property="og:image" content="https://doorstopped.org/og.jpg">
     <meta name="twitter:image" content="https://doorstopped.org/og.jpg">
@@ -181,6 +181,26 @@
     color: #fff; 
 }
 
+.menu-item  {
+    border-radius: 1px;
+    background-color: transparent;
+    position: relative;
+    padding: 8px 12px;
+    margin-right: 10px;
+    color: white;
+    border: 1px solid white;
+    z-index: 2;
+
+}
+
+.menu-item::before {
+    /* content: ''; */
+    position: absolute;
+    top: 0;
+}
+.menu-item:hover {
+    cursor: pointer;
+}
 
 .item {
     width: 100%; height: 25vh; background-color: #fce5dd
@@ -188,15 +208,40 @@
 .item:first-of-type {
     border-radius: 0px 20px 0px 0px;
 }
-
-.main-animate {
-    animation: mainOut 1.6s forwards;
+.main {
+    background-color: #DCFCE7; border-radius: 0px 40px 40px 0px; width: 100%; margin: 0; min-height: 100%; 
+}
+.section {
+    border-radius: 40px 0px 0px 40px; 
 }
 
 .section-animate {
     opacity: 0; /* Initially hidden */
     animation: fadeIn 0.7s forwards;
    /* animation-delay: 1.5s;  */
+}
+
+.main-animate {
+    animation: mainOut 1.6s forwards;
+}
+
+.section.main-animate {
+    animation: sectionOut 1.6s forwards
+}
+
+@keyframes sectionOut {
+    0% {
+        opacity: 1;
+        clip-path: inset(0 0 0 0);
+    }
+    40% {
+        opacity: 0.8;
+        clip-path: inset(0 0 0 0);
+    }
+    100% {
+        opacity: 0.7;
+        clip-path: inset(0 0 0 100%);
+    }
 }
 
 @keyframes mainOut {
@@ -235,15 +280,31 @@
 
 .experience {
     display: flex; flex-direction: row; justify-content: space-between; align-items: center; width: 100%;
-    height: 100vh;
+    height: 80vh;
+}
+
+#writing .experience {
+    height: 60vh;
 }
 
 .experience p {
     color: black;
 }
 
+.left {
+    width: 35%; margin-left: 10vh; 
+}
+
+.left p {
+    font-family: Inter; font-weight: 500; color: black;
+}
+
+.right {
+    width: 65%; display: flex; margin-left: 20px
+}
+
 .footer {
-    height: 50vh;
+    height: 35vh;
     width: 100%;
 }
 ul {
@@ -278,10 +339,101 @@ ul {
     }
 }
 
+.hamburger-menu {
+  cursor: pointer;
+  display: inline-block;
+}
+
+.hamburger-menu .bar1, .hamburger-menu .bar2, .hamburger-menu .bar3 {
+  width: 35px;
+  height: 5px;
+  background-color: white;
+  border-radius: 5px;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+/* Animation styles */
+.change .bar1 {
+  -webkit-transform: rotate(-45deg) translate(-7.5px, 7.5px);
+  transform: rotate(-45deg) translate(-7.5px, 7.5px);
+}
+
+.change .bar2 {opacity: 0;}
+
+.change .bar3 {
+  -webkit-transform: rotate(45deg) translate(-8px, -8px);
+  transform: rotate(45deg) translate(-8px, -8px);
+}
+
+.menu {
+    position: absolute; top: 3em; 
+    right: 3em; display: none; 
+    flex-direction: column; 
+    justify-content: space-between; width: 15%; max-height: 20vh; height: 20vh;
+}
+
+.right p {
+    width: 80%; margin: auto;
+}
+
+.wider, .right .wider {
+    width: 90%
+}
+
+
 @media (max-width: 768px) {
+    .menu {
+        width: 50%;
+        justify-content: space-evenly;
+    }
     .intro {
         left: 10px;
     }
+    .experience {
+        flex-direction: column-reverse;
+        justify-content: center;
+    }
+    
+    .main {
+        background-color: #DCFCE7; border-radius: 30px 30px 0px 0px; width: 100%; margin: 0; min-height: 100%; 
+    }
+    .right {
+        width: 100%; margin-left: 0; margin-bottom: 15px;
+    }
+    .demo-img {
+        width: calc(100% - 20px); 
+    }
+    .left, .right p, .wider, .right .wider{
+        width: calc(100% - 20px); margin-left: 10px; 
+
+    }
+    .experience {
+        height: 70vh;
+    }
+    #writing .experience {
+        height: 50vh;
+    }
+
+
+
+    @keyframes mainOut {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+        clip-path: inset(0 0 0 0);
+    }
+    40% {
+        transform: scale(0.9);
+        opacity: 0.8;
+        clip-path: inset(0 0 0 0);
+    }
+    100% {
+        transform: scale(0.9);
+        opacity: 0.7;
+        clip-path: inset(0 0 100% 0);
+    }
+}
 /* 
     .overlay-top,
     .overlay-bottom {
@@ -292,7 +444,19 @@ ul {
 </style>
 </head>
 <body>
-    <div class="main" id="main" style="background-color: #DCFCE7; border-radius: 0px 30px 30px 0px; width: 100%; margin: 0; min-height: 100%; ">
+    <div  onclick="toggleMenu()" id="menu-open" class="hamburger-menu" style="position: absolute; display: none; top: 1em; right: 1em; z-index: 3;">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+    </div>
+
+    <div class="menu" id="menu">
+        <a class="menu-item" id="main-menu" onclick="showSection('main')">Home</a>
+        <a class="menu-item" id="product-menu" onclick="showSection('product')">Product Design</a>
+        <a class="menu-item" id="writing-menu" onclick="showSection('writing')">Selected Writing</a>
+        <a class="menu-item" id="teaching-menu" onclick="showSection('teaching')">Teaching</a>
+    </div>
+    <div class="main" id="main">
         <div class="intro">
             <h1>Inspiring agency is my deepest, most sustaining vocation. All my research, design, and code is towards that goal.</h1>
             <div class="choices" style="display: flex; flex-direction: row; justify-content: flex-start; align-items: center;">
@@ -303,14 +467,14 @@ ul {
             <p style="font-size: 10pt; color: black">contact: guzovsky@princeton.edu</p>
         </div>
     </div>
-    <div class="section" id="product" style="display: none; opacity: 0; background-color: #ffa588; border-radius: 0px 30px 30px 0px; width: 100%; margin: 0; min-height: 100%; overflow: auto">
+    <div class="section" id="product" style="display: none; opacity: 0; background-color: #ffa588; width: 100%; margin: 0; min-height: 100%; overflow: auto">
         <div class="intro">
             <h1 style="color: white">I rapidly prototype ideas and bringing them to life.</h1>
         </div>
         <div id="scroll-down-arrow" class="arrow">↓</div>
         <div class="experiences" >
             <div class="experience">
-                <div style="width: 35%; margin-left: 10vh; "><p style="font-family: Inter; font-weight: 500; color: black;"> Solo researched, coded, and designed <a href="https://fix.school" >fix.school</a>, showing high schoolers 100s of ways to change their school experience, no matter what they’re struggling with.
+                <div class="left"><p> Solo researched, coded, and designed <a href="https://fix.school" >fix.school</a>, showing high schoolers 100s of ways to change their school experience, no matter what they’re struggling with.
                 </p>
                 <ul>
                     <li>Observed high school classes <a href="https://doorstopeducation.org/research">in 15 states</a></li>
@@ -319,12 +483,12 @@ ul {
                     <li>Got 600k organic social media views</li>
                 </ul>
             </div>
-                <div style="width: 65%; display: flex; margin-left: 20px">
+                <div class="right" >
                     <img src="/images/doorstoplatest.gif" width="80%" height="auto" class="demo-img" />
                 </div>
             </div>
             <div class="experience">
-                <div style="width: 35%; margin-left: 10vh; "><p style="font-family: Inter; font-weight: 500; color: black;"> Built <a href="https://promptoctopus.com">Prompt Octopus</a>, a tool for rapid <a href="https://aws.amazon.com/what-is/prompt-engineering/">prompt engineering</a>. Compare as many prompts as you need, side by side (40-80 active users).
+                <div class="left"><p style="font-family: Inter; font-weight: 500; color: black;"> Built <a href="https://promptoctopus.com">Prompt Octopus</a>, a tool for rapid <a href="https://aws.amazon.com/what-is/prompt-engineering/">prompt engineering</a>. Compare as many prompts as you need, side by side (40-80 active users).
                 </p>
                 <ul>
                     <li>Asynchronous function calls for speed</li>
@@ -332,24 +496,12 @@ ul {
                     <li>Comes with a pet octopus 🐙</li>
                 </ul>
             </div>
-                <div style="width: 65%; display: flex; margin-left: 20px">
+                <div class="right">
                     <img src="/images/search.gif" width="80%" height="auto" class="demo-img"  />
                 </div>
             </div>
             <div class="experience">
-                <div style="width: 35%; margin-left: 10vh; "><p style="font-family: Inter; font-weight: 500; color: black;">Worked at Perrfy (now <a href="https://spekto.ai/" >Spekto</a>),  an early-stage web development startup.
-                </p>
-
-            </div>
-                <div style="width: 65%; display: flex; margin-left: 20px">
-                    <ul>
-                        <li style="max-width: 80%; margin: auto;">Roadmapped a pivot from B2C to B2B based on data-driven insights and UX interviews that boosted conversion rates by 40%.</a></li>
-                        <li style="max-width: 80%; margin: auto;">Mastered complex web development concepts to rewrite 100 pages of Perrfy website content from technical to user-friendly and write 40 pages of blog content.</li>
-                        <li style="max-width: 80%; margin: auto;">Managed 12 independent contractors, prioritizing programming, design, content, and marketing needs.</li>
-                    </ul>                </div>
-            </div>
-            <div class="experience">
-                <div style="width: 35%; margin-left: 10vh; "><p style="font-family: Inter; font-weight: 500; color: black;"> Interned as a researcher at Columbia University building Finesse: a context-dependent thesaurus for creative writers.
+                <div class="left"><p style="font-family: Inter; font-weight: 500; color: black;"> Worked at Columbia University as an AI researcher building Finesse: a context-dependent thesaurus for creative writers.
                 </p>
                 <ul>
                     <li>Gives machine-learned suggestions that improve cadence and creativity</li>
@@ -357,43 +509,72 @@ ul {
                     <li>Built in 2021, before AI was cool :)</li>
                 </ul>
             </div>
-                <div style="width: 65%; display: flex; margin-left: 20px">
-                    <p style="width: 80%; margin: auto;">
+                <div class="right">
+                    <p >
                         "Having such a broad impact on the course of a project takes skills ranging from communication and vulnerability – such as reaching out for help when stuck understanding something – to the technical aptitude needed to understand and master range of difficult tools, from Amazon Web Services to python and the mathematics and statistics needed to make sense of machine learning. "
                         <br><br>– Jaan Altosaar, Postdoctoral Officer of Research at Columbia University</p>
                 </div>
             </div>
             <div class="experience">
-                <div style="width: 35%; margin-left: 10vh; "><p style="font-family: Inter; font-weight: 500; color: black;"> Side projects built to support friends and my campus community:
+                <div class="left"><p style="font-family: Inter; font-weight: 500; color: black;">Built <a href="https://github.com/benguz/digital-experience">loveisblob</a>, a loveable multiplayer game for long distance couples and anyone who wants to shoot hearts at each other.
                 </p>
                 <ul>
-                    <li>My digital <a href="https://benguz.github.io/chess">chess teaching aid</a></li>
-                    <li>A <a href="https://fix.school/princeton">knowledge base</a> for Princeton students</li>
-                    <li>My <a href="https://fix.school/doorstops/10minutebreak">JS-powered productivity app</a></li>
-                    <li>On the right is my two-player incredibly cute <a href="https://digital-experience.onrender.com/blob">blob game</a> for friends and long distance lovebirds</li>
+                    <li>Massively multiplayer (node.js + socket.io)</li>
+                    <li>Loved by dozens of couples</li>
+                    <li>Hand-designed smiley faces :)</li>
                 </ul>
             </div>
-                <div style="width: 65%; display: flex; margin-left: 20px">
-                   <img class="demo-img" src="https://digital-experience.onrender.com/og.png" onclick="window.open('https://digital-experience.onrender.com/blob')">
+                <div class="right">
+                    <img src="/images/love.gif" width="80%" height="auto" class="demo-img"  />
+                </div>
+            </div>
+            <div class="experience">
+                <div class="left" ><p style="font-family: Inter; font-weight: 500; color: black;">Worked at Perrfy (now <a href="https://spekto.ai/" >Spekto</a>),  an early-stage web development startup.
+                </p>
 
+            </div>
+                <div class="right">
+                    <ul>
+                        <li style="max-width: 80%; margin: auto;">Roadmapped a pivot from B2C to B2B based on data-driven insights and UX interviews that boosted conversion rates by 40%.</a></li>
+                        <li style="max-width: 80%; margin: auto;">Mastered complex web development concepts to rewrite 100 pages of Perrfy website content from technical to user-friendly and write 40 pages of blog content.</li>
+                        <li style="max-width: 80%; margin: auto;">Managed 12 independent contractors, prioritizing programming, design, content, and marketing needs.</li>
+                    </ul>                </div>
+            </div>
+
+            <div class="experience">
+                <div class="left"><p style="font-family: Inter; font-weight: 500; color: black;"> Side projects built to support friends and my campus community:
+                </p>
+                <ul>
+                    <li>My digital chess <a href="https://benguz.github.io/chess">pawn structure explainer</a></li>
+                    <li>A <a href="https://fix.school/princeton">knowledge base</a> for Princeton students</li>
+                    <li>My <a href="https://fix.school/doorstops/10minutebreak">JS-powered productivity app</a></li>
+                    <li>Websites like <a href="https://rachelwestlake.com">rachelwestlake.com</a>, <a href="https://fathomcode.com">fathomcode.com</a>, and <a href="https://www.allisonhartley.com/">more</a>!</li>
+                    <!-- <li>On the right is my two-player incredibly cute <a href="https://digital-experience.onrender.com/blob">blob game</a> for friends and long distance lovebirds</li> -->
+                </ul>
+            </div>
+                <div class="right">
+                   <!-- <img class="demo-img" src="https://digital-experience.onrender.com/og.png" onclick="window.open('https://digital-experience.onrender.com/blob')"> -->
+                   <video autoplay playsinline muted loop id="myVideo" width="80%" height="auto" class="demo-img">
+                    <source src="/images/otherproj.mp4" >
+                  </video>  
                 </div>
             </div>
         </div>
         <div class="footer">
-
         </div>
-
     </div>
-    <div class="section" id="writing" style="display: none; opacity: 0; background-color: #cc79f0; border-radius: 0px 30px 30px 0px; width: 100%; margin: 0; min-height: 100%;">
+    <div class="section" id="writing" style="display: none; opacity: 0; background-color: #cc79f0; width: 100%; margin: 0; min-height: 100%;">
         <div class="intro">
             <h1 style="color: white">I write on education, machine learning, and the evolution of historical method.</h1>
         </div>
+        <div id="scroll-down-arrow" class="arrow">↓</div>
+
         <div class="experiences">
             <div class="experience">
-                <div style="width: 35%; margin-left: 10vh; ">
+                <div class="left">
                     <p><a href="/pdfs/Capablanca Defeats Marshall's Attack - Guzovsky.pdf">"Capablanca Defeats Marshall's Attack"</a> — Dec 2023</p>
                 </div>
-                <div style="width: 65%; display: flex; margin-left: 20px">
+                <div class="right">
                     <p style="width: 90%">"This is an absolutely superb final paper. The best of the lot, in my view. The chosen historical episode is rich in itself, and the question of the historicity of a chess game (with its loose "script" of possible gambits) is enchanting. Simply excellent. This paper expanded my thinking."
                     <br><br>
                     – D. Graham Burnett, Princeton History Professor
@@ -402,30 +583,66 @@ ul {
                 </div>
             </div>
             <div class="experience">
-                <div style="width: 35%; margin-left: 10vh; ">
+                <div class="left">
                     <p><a href="https://doorstopeducation.org/research/leveraged.pdf">"Learning, Leveraged by Students"</a> — Jan 2023</p>
                 </div>
-                <div style="width: 65%; display: flex; margin-left: 20px">
-                    <p style="width: 90%">"I spent high school staring out the window and waiting for lunch time. I felt like there was nothing I could change about school. When I grew up and learned some adult skills (identifying and advocating for my unmet needs), I realized there was so much I could’ve done to be happier and feel safer in school. Spending two minutes a day building a better relationship with my teachers would’ve made the hours I spent in their classes so much more bearable, but I only started doing this senior year. Nobody told me.
-                         <br><br>
-                    I know what I should’ve done differently, but I didn’t yet know what other students could do."
+                <div class="right">
+                    <p class="wider">I spent high school staring out the window and waiting for lunch time. I felt like there was nothing I could change about school. This report is the culmination of my nationwide research on what students can change.
                 </p>
-
-
                 </div>
             </div>
             <div class="experience">
-                <div style="width: 35%; margin-left: 10vh; ">
+                <div class="left">
+                    <p><a href="https://blog.benguzovsky.com/potential">"Doorstops: Potential for more trusting schools"</a> — Sept 2022</p>
+                </div>
+                <div class="right">
+                    <p style="width: 90%">I am traveling across the country researching how trust is built, working to empower student voices.
+                </p>
+                </div>
+            </div>
+            <div class="experience">
+                <div class="left">
+                    <p><a href="https://brief.bismarckanalysis.com/p/pakistan-shows-the-limits-of-chinas">"Pakistan Shows the Limits of China’s Economic Power"</a> — Jun 2022</p>
+                </div>
+                <div class="right">
+                    <p style="width: 90%">Pakistan should be the flagship success of China’s economic aid and investment programs abroad. Instead, it casts doubts on the viability of a Chinese economic world order.
+                </p>
+                </div>
+            </div>
+            <div class="experience">
+                <div class="left">
                     <p><a href="https://blog.benguzovsky.com/fall_junior_paper.pdf">"Weighted Internationalism in League of Nations Hiring Practices"</a> — Jan 2022</p>
                 </div>
-                <div style="width: 65%; display: flex; margin-left: 20px">
+                <div class="right">
                     <p style="width: 90%">"Nothing escapes his keen analytical gaze... He has immersed himself in an incredible volume of seemingly-dry historical sources and not only wrestled them into a clear and well-structured piece of writing, but also condensed them into a pithy but substantial interpretive formula... articulated with flair."
                          <br><br>   
                     – Natasha Wheatley, Princeton History Professor
                 </p>
-                
 
+                </div>
+            </div>
+            <div class="experience">
+                <div class="left">
+                    <p><a href="https://www.nasslit.com/home/2020/11/16/bot-poetry-engineering-randomness">"Bot Poetry: Engineering Randomness"</a> — Nov 2020</p>
+                </div>
+                <div class="right">
+                    <p style="width: 90%"> I created a haiku-generating algorithm and argued that the future of great writing isn't human, computer, or computer-trying-to-emulate-human, it's human-computer collaboration.
+                </p>
 
+                </div>
+            </div>
+            <div class="experience">
+                <div class="left">
+                    <ul>
+                        <li>One-pager on <a href="/pdfs/ai-imbalances.pdf">asymetric impacts of AI on marketplaces</a> like Fiverr and UpWork</li>
+                        <li>A post on <a href="/pdfs/SEO-Friendly Content.pdf">scrappy search engine optimization</a></li>
+                        <li>On <a href="https://fix.school/scale">things that don't scale</a></li>
+                    </ul>
+                </div>
+                <div class="right">
+                    <p>Further Writing</p>
+
+                   
                 </div>
             </div>
         </div>
@@ -435,7 +652,7 @@ ul {
         </div>
         <!--  -->
     </div>
-    <div class="section" id="teaching" style="display: none; opacity: 0; background-color: #7396f7; border-radius: 0px 30px 30px 0px; width: 100%; margin: 0; min-height: 100%;">
+    <div class="section" id="teaching" style="display: none; opacity: 0; background-color: #7396f7; width: 100%; margin: 0; min-height: 100%;">
         <div class="intro">
             <h1 style="color: white">I teach writing to kids, executives, and inspired senior citizens, I help non-technical folks learn to code, and I teach my friends chess. Once in a while, I'll work with students in the US and abroad to craft incredible college applications.</h1>
         </div>
@@ -446,37 +663,81 @@ ul {
     </div>
     <script>
         addEventListener("DOMContentLoaded", (event) => {
-            sections = ['product', 'writing', 'teaching'];
+            let sections = ['product', 'writing', 'teaching'];
             let hash = window.location.hash.substring(1);
             if (sections.includes(hash)) {
                 setTimeout(function() {
                     showSection(hash);
-            }, 300);
+            }, 500);
             }
 
-            document.getElementById('scroll-down-arrow').addEventListener('click', function() {
-            // Scroll smoothly to the next section
-                window.scrollBy({
-                    top: window.innerHeight, // Scroll down by one viewport height
-                    left: 0,
-                    behavior: 'smooth' // Smooth scroll
-                });
+            document.querySelectorAll('.arrow').forEach(element => 
+                element.addEventListener('click', function() {
+                // Scroll smoothly to the next section
+                    window.scrollBy({
+                        top: window.innerHeight * 0.8, 
+                        left: 0,
+                        behavior: 'smooth' // Smooth scroll
+                    });
+                    this.style.display = 'none';
+                }));
             });
-        });
-        colors = {product: '#ffa588', writing: '#E9D0F4', teaching: '#cad6f7'};
-
+        colors = {product: '#ffa588', writing: '#cc79f0', teaching: '#7396f7', main: '#DCFCE7'};
+        let currentSection = 'main'
         function showSection(section) {
+
             window.location.hash = section;
             document.body.style.backgroundColor = colors[section];
-            document.getElementById('main').classList.add('main-animate');
+            if (document.getElementById('menu').style.display == 'flex') {
+                document.getElementById('menu-open').classList.toggle("change");
+                document.getElementById('menu').style.display = "none"
+                console.log('altered in showSection')
+            }
+            if (section == 'main') {
+                    document.getElementById('menu-open').style.display = 'none';
+                }
+            document.getElementById(currentSection).classList.remove('section-animate');
+            document.getElementById(currentSection).classList.add('main-animate');
             setTimeout(function() {
                 // Change display to block before starting the animation
-                document.getElementById('main').style.display = 'none';
+                document.getElementById(currentSection).style.display = 'none';
                 document.getElementById(section).style.display = 'block';
+                document.getElementById(section).classList.remove('section-animate', 'main-animate');
                 document.getElementById(section).classList.add('section-animate');
+                if (section != 'main') {
+                    document.getElementById('menu-open').style.display = 'block';
+                } 
+                document.getElementById(section + '-menu').style.display = "none";
+                document.getElementById(currentSection + '-menu').style.display = "block";
+                currentSection = section;
             }, 1600);
+            setTimeout(function() {
+                document.body.style.backgroundColor = colors['main'];
+            }, 2300);
         }
-        
+        function toggleMenu() {
+            document.getElementById('menu-open').classList.toggle("change");
+            let div = document.getElementById('menu');
+            if (div.style.display === "none" || !div.style.display) {
+                div.style.display = "flex";
+            } else {
+                div.style.display = "none";
+            }
+
+        }
+        window.onhashchange = function (e) {
+            let sections = ['product', 'writing', 'teaching'];
+            let hash = window.location.hash.substring(1);
+            if (sections.includes(hash)) {
+                setTimeout(function() {
+                        showSection(hash);
+                }, 300); 
+            } else {
+                setTimeout(function() {
+                        showSection('main');
+                }, 300);
+            }
+        }
     </script>
     <!-- <div class="design" style="border-radius: 20px 20px 0px 0px; width: 50%; margin: 0; min-height: 100%; display: flex; flex-direction: column;">
         <div class="item" style=""></div>
