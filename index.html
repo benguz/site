@@ -17,8 +17,11 @@
     <meta property="twitter:url" content="https://doorstopped.org/"> -->
     <meta property="twitter:title" content=">Ben Guzovsky">
     <meta property="twitter:description" content="">
-    <link href="/android-chrome-512x512.png" rel="apple-touch-icon">
-    <link rel="shortcut icon" href="/android-chrome-512x512.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
 
     <!-- include jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -282,6 +285,9 @@
     display: flex; flex-direction: row; justify-content: space-between; align-items: center; width: 100%;
     height: 80vh;
 }
+#backwards {
+    flex-direction: row-reverse;
+}
 
 #writing .experience {
     height: 60vh;
@@ -390,7 +396,7 @@ ul {
     .intro {
         left: 10px;
     }
-    .experience {
+    .experience, #backwards {
         flex-direction: column-reverse;
         justify-content: center;
     }
@@ -542,7 +548,7 @@ ul {
             </div>
 
             <div class="experience">
-                <div class="left"><p style="font-family: Inter; font-weight: 500; color: black;"> Side projects built to support friends and my campus community:
+                <div class="left"><p style="font-family: Inter; font-weight: 500; color: black;"> Created projects to support friends and my campus community:
                 </p>
                 <ul>
                     <li>My digital chess <a href="https://benguz.github.io/chess">pawn structure explainer</a></li>
@@ -631,7 +637,7 @@ ul {
 
                 </div>
             </div>
-            <div class="experience">
+            <div class="experience" id="backwards">
                 <div class="left">
                     <ul>
                         <li>One-pager on <a href="/pdfs/ai-imbalances.pdf">asymetric impacts of AI on marketplaces</a> like Fiverr and UpWork</li>
