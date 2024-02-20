@@ -31,7 +31,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
 
 <script defer data-domain="benguzovsky.com" src="https://plausible.io/js/script.js"></script>
 <style>
@@ -182,6 +182,7 @@
 
 .choice:hover {
     color: #fff; 
+    cursor: pointer;
 }
 
 .menu-item  {
@@ -466,12 +467,18 @@ ul {
         <div class="intro">
             <h1>Inspiring agency is my deepest, most sustaining vocation. All my research, design, and code is towards that goal.</h1>
             <div class="choices" style="display: flex; flex-direction: row; justify-content: flex-start; align-items: center;">
-                <button onclick="showSection('product')" class="choice">Product Design</button><button class="choice" onclick="showSection('writing')">Selected Writing</button><button class="choice" onclick="showSection('teaching')">Teaching</button>
+                <button onclick="showSection('product')" onmouseover="document.getElementById('demo').style.display='block'" onmouseleave="document.getElementById('demo').style.display='none'" class="choice">Product Design</button>
+                <button class="choice" onclick="showSection('writing')" onmouseover="document.getElementById('words').style.display='block'" onmouseleave="document.getElementById('words').style.display='none'" >Selected Writing</button>
+                <button class="choice" onclick="showSection('teaching')">Teaching</button>
             </div>
         </div>
         <div style="position: absolute; bottom: 0.4em; right: 1.5em;">
             <p style="font-size: 10pt; color: black">contact: guzovsky@princeton.edu</p>
         </div>
+        <video autoplay playsinline muted loop id="demo" width="40%" height="auto" style="position: absolute; right: 2em; top: 30%;  display: none;">
+            <source src="/images/all.mp4" >
+          </video>  
+        <img src="/images/cycle/capa.png" id="words" style="max-width: 38%; height: auto; position: relative; top: 50%; transform: translate(60vw, -50%); -webkit-transform: translate(60vw, -50%); display: none;"/>
     </div>
     <div class="section" id="product" style="display: none; opacity: 0; background-color: #ffa588; width: 100%; margin: 0; min-height: 100%; overflow: auto">
         <div class="intro">
@@ -688,6 +695,17 @@ ul {
                     this.style.display = 'none';
                 }));
             });
+            let images = ['capa.png', 'friend.png', 'levpic.png', 'page1.png', 'pak.png', 'poetry.png'];
+            let current = 0;
+            const intervalID = setInterval(myCallback, 500);
+            let words = document.getElementById('words');
+            function myCallback() {
+                words.src = "/images/cycle/" + images[current % images.length];
+                // let full = (window.innerHeight - words.offsetHeight) / 2;
+                // words.style.top = full + "px";
+                
+                current++;
+            }
         colors = {product: '#ffa588', writing: '#cc79f0', teaching: '#7396f7', main: '#DCFCE7'};
         let currentSection = 'main'
         function showSection(section) {
