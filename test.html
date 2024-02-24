@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title>Ben Guzovsky - Product Design Portfolio</title>
+    <meta name="title" content="Ben Guzovsky - Product Design Portfolio">
+    <meta name="description" content="I've run 100s of UX interviews, organized research in 15 states, & grown to 700k social views.">
+    <meta property="og:url" content="https://folio.benguzovsky.com/">
+    <meta property="og:image" content="https://folio.benguzovsky.com/images/folio-og.png">
+    <meta name="twitter:image" content="https://folio.benguzovsky.com/images/folio-og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:title" content="Ben Guzovsky - Product Design Portfolio">
+    <meta property="og:description" content="I've run 100s of UX interviews, organized research in 15 states, & grown to 700k social views.">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://folio.benguzovsky.com/">
+    <meta property="twitter:title" content="Ben Guzovsky - Product Design Portfolio">
+    <meta property="twitter:description" content="I've run 100s of UX interviews, organized research in 15 states, & grown to 700k social views.">
+    <link rel="shortcut icon" href="/favicon/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+
+    <!-- include jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- include jQuery UI -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+
+<script defer data-domain="benguzovsky.com" src="https://plausible.io/js/script.js"></script>
+<style>
+    * {
+        box-sizing: border-box;
+        position: relative;
+        min-width: 0;
+    }
+
+    body {
+        min-height: 100dvh;
+        max-width: 100%;
+        /* font-family: -apple-system, BlinkMacSystemFont, sans-serif; */
+        font-family: inter, sans-serif;
+        margin: 0;
+        display: flex;
+        background-color: whitesmoke;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    h1, h2, h3, h4 {
+        text-wrap: balance
+    }
+
+    p {
+        text-wrap: pretty;
+        /* font-family: Lora, serif; */
+        color: black;
+        margin: 0;
+        margin-bottom: 5px;
+        font-size: 12pt;
+        line-height: 1.3;
+    }
+    h1, h2 {
+        font-size: 18pt;
+        font-weight:400;
+    }
+    a {
+        color: inherit;
+        /* font-family: Lora, serif; */
+        /* text-decoration: none; */
+    }
+    .demo-img {
+        border-radius: 2px;
+        margin: auto;
+    }
+/* 
+    img {
+        position: relative; 
+        animation: slideIn 1s ease 3s forwards;
+        width: 100%;
+        margin-top: 20%;
+        left: -20%;
+        height: auto;
+    }
+    #img-1 {
+        visibility: hidden; 
+
+    } */
+
+    @keyframes slideIn {
+        0% {
+            margin-top: 20%;
+            left: -20%;
+        }
+        /* 85% { 
+            margin-top: 7%;
+            left: 3%;
+        }*/
+        100% {
+            margin-top: 10%;
+            left: 0;
+        }
+    }
+
+    /* .feed {
+        width: 78%;
+        overflow: hidden;
+        padding: 10px;
+    }
+    .timeline {
+        width: 22%;
+        padding: 10px;
+        margin-left: 20px;
+    }
+    
+    .overlay-top,
+.overlay-bottom {
+    position: fixed;
+    -o-object-fit: cover;
+    object-fit: cover;
+    height: 12%;
+    width: 100%;
+    z-index: 2;
+    left: 0;
+    pointer-events: none;
+}
+
+.overlay-top {
+    top: -1px
+}
+
+.overlay-bottom {
+    bottom: 1px
+}
+
+.descriptor {
+    margin-top: 300px;
+}
+*/
+
+.intro {
+    position: absolute; top: 40vh; left: 10vh;
+    display: flex;
+    flex-direction: column;
+    max-width: 60%;
+}
+
+.choice {
+    border-radius: 15px;
+    background-color: transparent;
+    position: relative;
+    padding: 8px 12px;
+    margin-right: 10px;
+    border: 1px solid rgb(75, 75, 75);
+  -webkit-transition: color 0.3s;
+  -moz-transition: color 0.3s;
+  transition: color 0.3s;
+  overflow: hidden;
+  z-index: 2;
+}
+.choice::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: calc(-100% - 1px); /* Start from the left */
+    width: calc(100% + 1px);
+    height: 100%;
+    background-color: #474747; /* Color that slides over */
+    transition: left 0.3s;
+    border-radius: 10px; /* Same border radius as the button */
+    z-index: -1;
+}
+
+.choice:hover::before {
+    left: 0;
+}
+
+.choice:hover {
+    color: #fff; 
+    cursor: pointer;
+}
+
+.menu-item  {
+    border-radius: 1px;
+    background-color: transparent;
+    position: relative;
+    padding: 8px 12px;
+    margin-right: 10px;
+    color: white;
+    border: 1px solid white;
+    z-index: 2;
+
+}
+
+.menu-item::before {
+    /* content: ''; */
+    position: absolute;
+    top: 0;
+}
+.menu-item:hover {
+    cursor: pointer;
+}
+
+.item {
+    width: 100%; height: 25vh; background-color: #fce5dd
+}
+.item:first-of-type {
+    border-radius: 0px 20px 0px 0px;
+}
+.main {
+    background-color: #DCFCE7; border-radius: 0px 40px 40px 0px; width: 100%; margin: 0; min-height: 100%; 
+}
+.section {
+    border-radius: 40px 0px 0px 40px; 
+}
+
+.section-animate {
+    opacity: 0; /* Initially hidden */
+    animation: fadeIn 0.7s forwards;
+   /* animation-delay: 1.5s;  */
+}
+
+.main-animate {
+    animation: mainOut 1.6s forwards;
+}
+
+.section.main-animate {
+    animation: sectionOut 1.6s forwards
+}
+
+@keyframes sectionOut {
+    0% {
+        opacity: 1;
+        clip-path: inset(0 0 0 0);
+    }
+    40% {
+        opacity: 0.8;
+        clip-path: inset(0 0 0 0);
+    }
+    100% {
+        opacity: 0.7;
+        clip-path: inset(0 0 0 100%);
+    }
+}
+
+@keyframes mainOut {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+        clip-path: inset(0 0 0 0);
+    }
+    40% {
+        transform: scale(0.9);
+        opacity: 0.8;
+        clip-path: inset(0 0 0 0);
+    }
+    100% {
+        transform: scale(0.9);
+        opacity: 0.7;
+        clip-path: inset(0 0 0 100%);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.experiences {
+    display: flex; 
+    flex-direction: column; 
+    margin-top: 100vh; 
+    justify-content: center; align-items: center; width: 100%;
+}
+
+.experience {
+    display: flex; flex-direction: row; justify-content: space-between; align-items: center; width: 100%;
+    height: 80vh;
+}
+#backwards {
+    flex-direction: row-reverse;
+}
+
+#writing .experience {
+    height: 60vh;
+}
+
+.experience p {
+    color: black;
+}
+
+.left {
+    width: 35%; margin-left: 10vh; 
+}
+
+.left p {
+    font-family: Inter; font-weight: 500; color: black;
+}
+
+.right {
+    width: 65%; display: flex; margin-left: 20px
+}
+
+.footer {
+    height: 35vh;
+    width: 100%;
+}
+ul {
+    padding-inline-start: 20px;
+}
+
+.arrow {
+    font-size: 30px; /* Adjust the size of the arrow */
+    color: white; /* Arrow color */
+    text-align: center;
+    cursor: pointer; /* Change cursor to indicate it's clickable */
+    animation: pulse 2.5s infinite;
+    position: absolute;
+    top: 92vh;
+    left: calc(50% - 15px);
+    opacity: 0;
+    animation-delay: 1.5s;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.hamburger-menu {
+  cursor: pointer;
+  display: inline-block;
+}
+
+.hamburger-menu .bar1, .hamburger-menu .bar2, .hamburger-menu .bar3 {
+  width: 35px;
+  height: 5px;
+  background-color: white;
+  border-radius: 5px;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+/* Animation styles */
+.change .bar1 {
+  -webkit-transform: rotate(-45deg) translate(-7.5px, 7.5px);
+  transform: rotate(-45deg) translate(-7.5px, 7.5px);
+}
+
+.change .bar2 {opacity: 0;}
+
+.change .bar3 {
+  -webkit-transform: rotate(45deg) translate(-8px, -8px);
+  transform: rotate(45deg) translate(-8px, -8px);
+}
+
+.menu {
+    position: absolute; top: 3em; 
+    right: 3em; display: none; 
+    flex-direction: column; 
+    justify-content: space-between; width: 15%; max-height: 20vh; height: 20vh;
+}
+
+.right p {
+    width: 80%; margin: auto;
+}
+
+.wider, .right .wider {
+    width: 90%
+}
+
+
+@media (max-width: 768px) {
+    .menu {
+        width: 50%;
+        justify-content: space-evenly;
+    }
+    .intro {
+        left: 10px;
+        max-width: none;
+    }
+    .experience, #backwards {
+        flex-direction: column-reverse;
+        justify-content: center;
+    }
+    
+    .main {
+        background-color: #DCFCE7; border-radius: 30px 30px 0px 0px; width: 100%; margin: 0; min-height: 100%; 
+    }
+    .right {
+        width: 100%; margin-left: 0; margin-bottom: 15px;
+    }
+    .demo-img {
+        width: calc(100% - 20px); 
+    }
+    .left, .right p, .wider, .right .wider{
+        width: calc(100% - 20px); margin-left: 10px; 
+
+    }
+    .experience {
+        height: 70vh;
+    }
+    #writing .experience {
+        height: 50vh;
+    }
+
+
+
+    @keyframes mainOut {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+        clip-path: inset(0 0 0 0);
+    }
+    40% {
+        transform: scale(0.9);
+        opacity: 0.8;
+        clip-path: inset(0 0 0 0);
+    }
+    100% {
+        transform: scale(0.9);
+        opacity: 0.7;
+        clip-path: inset(0 0 100% 0);
+    }
+}
+/* 
+    .overlay-top,
+    .overlay-bottom {
+        height: 80px;
+        pointer-events: none;
+    } */
+} 
+
+@media (min-width: 2560px) {
+    h1, h2 {
+        font-size: 24pt;
+    }
+}
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  overflow: hidden;
+  height: 100vh;
+  width: 100%;
+}
+
+.column {
+  padding: 10px;
+  min-width: 33.3%;
+  text-align: left;
+
+}
+
+@keyframes scrollUp {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(50%);
+  }
+  
+}
+
+@keyframes scrollDown {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+    0%, 70% {
+        opacity: 100%
+    }
+
+    100% {
+        opacity: 0%;
+    }
+}
+/* 
+#scrollUp {
+  animation-name: scrollUp;
+  animation-iteration-count: infinite;
+}
+
+#scrollDown1 {
+  animation-name: scrollDown;
+  animation-iteration-count: infinite;
+}
+
+#scrollDown2 {
+  animation-name: scrollDown;
+  animation-iteration-count: infinite;
+} */
+
+.box {
+    width: 100%; 
+    padding: 10px;
+}
+
+.text {
+    border-radius: 2px;
+}
+
+.text p {
+    color: black;
+    font-size: 10pt;
+    text-align: left;
+}
+
+.yonk {
+    animation: modOut 4.6s forwards;
+}
+
+@keyframes modOut {
+    0%, 10% {
+        transform: scale(1);
+        opacity: 1;
+        clip-path: inset(0 0 0 0);
+    }
+    50% {
+        transform: scale(0.9);
+        opacity: 0.8;
+        clip-path: inset(0 0 0 0);
+    }
+    100% {
+        transform: scale(0.9);
+        opacity: 0.7;
+        clip-path: inset(0 0 0 100%);
+    }
+}
+
+</style>
+</head>
+<body>
+    <div class="overlay" id="main" style="z-index: 2; position: absolute; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center;  background-color: white;   
+    ">
+        <h1>I rapidly prototype ideas and bring them to life.</h1>
+    </div>
+    <div class="container" id="booo">
+        <marquee class="column" direction="up">
+            <div class="box">
+                <img src="/images/cycle/page1.png" width="100%" height="auto" />
+            </div>
+            <div class="box">
+                <img src="/pics/pitch.png" width="100%" height="auto" />
+            </div>
+            <div class="box">
+                <img src="/pics/fin.png" width="100%" height="auto" />
+            </div>
+            
+            <div class="box">
+                <img src="/images/cycle/pak.png" width="100%" height="auto" />
+            </div>
+            <div class="box">
+                <img src="/pics/math.png" width="100%" height="auto" />
+            </div>
+            <div class="box">
+                <img src="/images/cycle/levpic.png" width="100%" height="auto" />
+            </div>
+                        <!-- REPEAT -->
+                        <div class="box">
+                            <img src="/images/cycle/page1.png" width="100%" height="auto" />
+                        </div>
+                        <div class="box">
+                            <img src="/pics/pitch.png" width="100%" height="auto" />
+                        </div>
+                        <div class="box">
+                            <img src="/pics/fin.png" width="100%" height="auto" />
+                        </div>
+                        
+                        <div class="box">
+                            <img src="/images/cycle/pak.png" width="100%" height="auto" />
+                        </div>
+                        <div class="box">
+                            <img src="/pics/math.png" width="100%" height="auto" />
+                        </div>
+                        <div class="box">
+                            <img src="/images/cycle/levpic.png" width="100%" height="auto" />
+                        </div>
+        </marquee>
+    
+        <marquee class="column" direction="down">
+            <div class="box">
+                <img src="/pics/ib.png" width="100%" height="auto" />
+            </div>
+       
+            <div class="box">
+                <img src="/images/cycle/poetry.png" width="100%" height="auto" />
+            </div>
+            <div class="box">
+                <img src="/pics/ref.png" width="100%" height="auto" />
+            </div>
+            <div class="box">
+                <img src="/pics/sucks.png" width="100%" height="auto" />
+            </div>
+            <div class="box">
+                <img src="/pics/tt.png" width="100%" height="auto" />
+            </div>
+            <div class="box">
+                <img src="/images/cycle/friend.png" width="100%" height="auto" />
+            </div>
+            <!-- REPEAT -->
+            <div class="box">
+                <img src="/pics/ib.png" width="100%" height="auto" />
+            </div>
+       
+            <div class="box">
+                <img src="/images/cycle/poetry.png" width="100%" height="auto" />
+            </div>
+            <div class="box">
+                <img src="/pics/ref.png" width="100%" height="auto" />
+            </div>
+            <div class="box">
+                <img src="/pics/sucks.png" width="100%" height="auto" />
+            </div>
+            <div class="box">
+                <img src="/pics/tt.png" width="100%" height="auto" />
+            </div>
+            <div class="box">
+                <img src="/images/cycle/friend.png" width="100%" height="auto" />
+            </div>
+        </marquee>
+        <marquee class="column" direction="up">
+
+            <div class="box">
+                <img src="/pics/chess.png" width="100%" height="auto" />
+               
+            </div> <div class="box">
+                <img src="/pics/ah.png" width="100%" height="auto" />
+               
+            </div> <div class="box">
+                <img src="/pics/grades.png" width="100%" height="auto" />
+               
+            </div> <div class="box">
+                <img src="/pics/mld.png" width="100%" height="auto" />
+               
+            </div>
+            <div class="box">
+                <img src="/pics/policy.png" width="100%" height="auto" />
+               
+            </div>
+                        <!-- REPEAT -->
+
+                        <div class="box">
+                            <img src="/pics/chess.png" width="100%" height="auto" />
+                           
+                        </div> <div class="box">
+                            <img src="/pics/ah.png" width="100%" height="auto" />
+                           
+                        </div> <div class="box">
+                            <img src="/pics/grades.png" width="100%" height="auto" />
+                           
+                        </div> <div class="box">
+                            <img src="/pics/mld.png" width="100%" height="auto" />
+                           
+                        </div>
+                        <div class="box">
+                            <img src="/pics/policy.png" width="100%" height="auto" />
+                           
+                        </div>
+        </marquee>
+      </div>
+      <script>
+        addEventListener("DOMContentLoaded", (event) => {
+            document.getElementById('main').classList.add('yonk');
+
+            setTimeout(function() {
+                // Change display to block before starting the animation
+                document.getElementById('main').style.display = 'none';
+                document.getElementById('booo').style.display = 'flex';
+
+            }, 4600);
+        });
+      </script>
+
+</body>
