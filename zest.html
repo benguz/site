@@ -275,251 +275,47 @@
         opacity: 1;
     }
 }
-
-.experiences {
-    display: flex; 
-    flex-direction: column; 
-    margin-top: 100vh; 
-    justify-content: center; align-items: center; width: 100%;
-}
-
-.experience {
-    display: flex; flex-direction: row; justify-content: space-between; align-items: center; width: 100%;
-    height: 80vh;
-}
-#backwards {
-    flex-direction: row-reverse;
-}
-
-#writing .experience {
-    height: 60vh;
-}
-
-.experience p {
-    color: black;
-}
-
-.left {
-    width: 35%; margin-left: 10vh; 
-}
-
-.left p {
-    font-family: Inter; font-weight: 500; color: black;
-}
-
-.right {
-    width: 65%; display: flex; margin-left: 20px
-}
-
-.footer {
-    height: 35vh;
-    width: 100%;
-}
-ul {
-    padding-inline-start: 20px;
-}
-
-.arrow {
-    font-size: 30px; /* Adjust the size of the arrow */
-    color: white; /* Arrow color */
-    text-align: center;
-    cursor: pointer; /* Change cursor to indicate it's clickable */
-    animation: pulse 2.5s infinite;
-    position: absolute;
-    top: 92vh;
-    left: calc(50% - 15px);
-    opacity: 0;
-    animation-delay: 1.5s;
-}
-
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-        opacity: 1;
-    }
-    50% {
-        transform: scale(1.2);
-        opacity: 0.7;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-.hamburger-menu {
-  cursor: pointer;
-  display: inline-block;
-}
-
-.hamburger-menu .bar1, .hamburger-menu .bar2, .hamburger-menu .bar3 {
-  width: 35px;
-  height: 5px;
-  background-color: white;
-  border-radius: 5px;
-  margin: 6px 0;
-  transition: 0.4s;
-}
-
-/* Animation styles */
-.change .bar1 {
-  -webkit-transform: rotate(-45deg) translate(-7.5px, 7.5px);
-  transform: rotate(-45deg) translate(-7.5px, 7.5px);
-}
-
-.change .bar2 {opacity: 0;}
-
-.change .bar3 {
-  -webkit-transform: rotate(45deg) translate(-8px, -8px);
-  transform: rotate(45deg) translate(-8px, -8px);
-}
-
-.menu {
-    position: absolute; top: 3em; 
-    right: 3em; display: none; 
-    flex-direction: column; 
-    justify-content: space-between; width: 15%; max-height: 20vh; height: 20vh;
-}
-
-.right p {
-    width: 80%; margin: auto;
-}
-
-.wider, .right .wider {
-    width: 90%
-}
-
-
-@media (max-width: 768px) {
-    .menu {
-        width: 50%;
-        justify-content: space-evenly;
-    }
-    .intro {
-        left: 10px;
-        max-width: none;
-    }
-    .experience, #backwards {
-        flex-direction: column-reverse;
-        justify-content: center;
-    }
-    
-    .main {
-        background-color: #DCFCE7; border-radius: 30px 30px 0px 0px; width: 100%; margin: 0; min-height: 100%; 
-    }
-    .right {
-        width: 100%; margin-left: 0; margin-bottom: 15px;
-    }
-    .demo-img {
-        width: calc(100% - 20px); 
-    }
-    .left, .right p, .wider, .right .wider{
-        width: calc(100% - 20px); margin-left: 10px; 
-
-    }
-    .experience {
-        height: 70vh;
-    }
-    #writing .experience {
-        height: 50vh;
-    }
-
-
-
-    @keyframes mainOut {
-    0% {
-        transform: scale(1);
-        opacity: 1;
-        clip-path: inset(0 0 0 0);
-    }
-    40% {
-        transform: scale(0.9);
-        opacity: 0.8;
-        clip-path: inset(0 0 0 0);
-    }
-    100% {
-        transform: scale(0.9);
-        opacity: 0.7;
-        clip-path: inset(0 0 100% 0);
-    }
-}
-/* 
-    .overlay-top,
-    .overlay-bottom {
-        height: 80px;
-        pointer-events: none;
-    } */
-} 
-
 @media (min-width: 2560px) {
     h1, h2 {
         font-size: 24pt;
     }
 }
-.container {
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  overflow: hidden;
-  height: 100vh;
-  width: 100%;
-}
+
 
 .column {
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 70vh;
+  height: 100vw;
+  transform:rotate(-90deg) translateY(-70vh);
+  transform-origin: right top;
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.column::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+
+.column > div {
+    width: 900px;
+  height: 900px;
+  max-height: 100%;
+  max-width: 100%;
+
+  margin: 10px;
+  transform: rotate(90deg);
+  transform-origin: right top;
+  cursor: pointer;
   padding: 10px;
-  min-width: 33.3%;
-  text-align: left;
 
 }
 
-@keyframes scrollUp {
-  0% {
-    transform: translateY(-50%);
-  }
-  100% {
-    transform: translateY(50%);
-  }
-  
-}
 
-@keyframes scrollDown {
-  from {
-    transform: translateY(100%);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeOut {
-    0%, 70% {
-        opacity: 100%
-    }
-
-    100% {
-        opacity: 0%;
-    }
-}
-/* 
-#scrollUp {
-  animation-name: scrollUp;
-  animation-iteration-count: infinite;
-}
-
-#scrollDown1 {
-  animation-name: scrollDown;
-  animation-iteration-count: infinite;
-}
-
-#scrollDown2 {
-  animation-name: scrollDown;
-  animation-iteration-count: infinite;
+/* .box {
+    height: 50vh;
+    display: inline-block
 } */
-
-.box {
-    width: 100%; 
-    padding: 10px;
-}
 
 .text {
     border-radius: 2px;
@@ -531,162 +327,166 @@ ul {
     text-align: left;
 }
 
-.yonk {
-    animation: modOut 4.6s forwards;
-}
 
-@keyframes modOut {
-    0%, 20% {
-        transform: scale(1);
-        opacity: 1;
-        clip-path: inset(0 0 0 0);
-    }
-    50% {
-        transform: scale(0.9);
-        opacity: 0.8;
-        clip-path: inset(0 0 0 0);
-    }
-    100% {
-        transform: scale(0.9);
-        opacity: 0.7;
-        clip-path: inset(0 0 0 100%);
-    }
-}
 
 </style>
 </head>
-<body>
-    <div class="overlay" id="main" style="z-index: 2; position: absolute; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center;  background-color: white;   
-    ">
-        <h1>I rapidly prototype ideas and bring them to life.</h1>
-    </div>
-    <div class="container" id="booo">
-        <marquee class="column" direction="up">
+<body style="flex-direction: column"> 
+
+        <h1 style="padding: 20px;">I rapidly prototype ideas and bring them to life.</h1>
+        <div class="column" direction="right">
             <div class="box">
-                <img src="/images/cycle/page1.png" width="100%" height="auto" />
+                <img src="/images/cycle/page1.png" height="100%" width="auto"  />
             </div>
             <div class="box">
-                <img src="/pics/pitch.png" width="100%" height="auto" />
+                <img src="/pics/pitch.png" height="100%" width="auto"   />
             </div>
             <div class="box">
-                <img src="/pics/fin.png" width="100%" height="auto" />
+                <img src="/pics/fin.png" height="100%" width="auto"   />
             </div>
             
             <div class="box">
-                <img src="/images/cycle/pak.png" width="100%" height="auto" />
+                <img src="/images/cycle/pak.png" height="100%" width="auto"   />
             </div>
             <div class="box">
-                <img src="/pics/math.png" width="100%" height="auto" />
+                <img src="/pics/math.png" height="100%" width="auto"   />
             </div>
             <div class="box">
-                <img src="/images/cycle/levpic.png" width="100%" height="auto" />
+                <img src="/images/cycle/levpic.png" height="100%" width="auto"   />
             </div>
                         <!-- REPEAT -->
                         <div class="box">
-                            <img src="/images/cycle/page1.png" width="100%" height="auto" />
+                            <img src="/images/cycle/page1.png" height="100%" width="auto"   />
                         </div>
                         <div class="box">
-                            <img src="/pics/pitch.png" width="100%" height="auto" />
+                            <img src="/pics/pitch.png" height="100%" width="auto"   />
                         </div>
                         <div class="box">
-                            <img src="/pics/fin.png" width="100%" height="auto" />
+                            <img src="/pics/fin.png" height="100%" width="auto"   />
                         </div>
                         
                         <div class="box">
-                            <img src="/images/cycle/pak.png" width="100%" height="auto" />
+                            <img src="/images/cycle/pak.png" height="100%" width="auto"   />
                         </div>
                         <div class="box">
-                            <img src="/pics/math.png" width="100%" height="auto" />
+                            <img src="/pics/math.png" height="100%" width="auto"   />
                         </div>
                         <div class="box">
-                            <img src="/images/cycle/levpic.png" width="100%" height="auto" />
+                            <img src="/images/cycle/levpic.png" height="100%" width="auto"   />
                         </div>
-        </marquee>
-    
-        <marquee class="column" direction="down">
+                    </div>
+        <h1 >I write on education, machine learning, and the evolution of historical method.</h1>
+
+        <div class="column" direction="right">
             <div class="box">
-                <img src="/pics/ib.png" width="100%" height="auto" />
+                <img src="/pics/ib.png" height="100%" width="auto"   />
             </div>
        
             <div class="box">
-                <img src="/images/cycle/poetry.png" width="100%" height="auto" />
+                <img src="/images/cycle/poetry.png" height="100%" width="auto"   />
             </div>
             <div class="box">
-                <img src="/pics/ref.png" width="100%" height="auto" />
+                <img src="/pics/ref.png" height="100%" width="auto"   />
             </div>
             <div class="box">
-                <img src="/pics/sucks.png" width="100%" height="auto" />
+                <img src="/pics/sucks.png" height="100%" width="auto"   />
             </div>
             <div class="box">
-                <img src="/pics/tt.png" width="100%" height="auto" />
+                <img src="/pics/tt.png" height="100%" width="auto"   />
             </div>
             <div class="box">
-                <img src="/images/cycle/friend.png" width="100%" height="auto" />
+                <img src="/images/cycle/friend.png" height="100%" width="auto"   />
             </div>
             <!-- REPEAT -->
             <div class="box">
-                <img src="/pics/ib.png" width="100%" height="auto" />
+                <img src="/pics/ib.png" height="100%" width="auto"   />
             </div>
        
             <div class="box">
-                <img src="/images/cycle/poetry.png" width="100%" height="auto" />
+                <img src="/images/cycle/poetry.png" height="100%" width="auto"   />
             </div>
             <div class="box">
-                <img src="/pics/ref.png" width="100%" height="auto" />
+                <img src="/pics/ref.png" height="100%" width="auto"   />
             </div>
             <div class="box">
-                <img src="/pics/sucks.png" width="100%" height="auto" />
+                <img src="/pics/sucks.png" height="100%" width="auto"   />
             </div>
             <div class="box">
-                <img src="/pics/tt.png" width="100%" height="auto" />
+                <img src="/pics/tt.png" height="100%" width="auto"   />
             </div>
             <div class="box">
-                <img src="/images/cycle/friend.png" width="100%" height="auto" />
+                <img src="/images/cycle/friend.png" height="100%" width="auto"   />
             </div>
-        </marquee>
-        <marquee class="column" direction="up">
+        </div>
+        <div class="column" direction="right">
 
             <div class="box">
-                <img src="/pics/chess.png" width="100%" height="auto" />
+                <img src="/pics/chess.png" height="100%" width="auto"   />
                
             </div> <div class="box">
-                <img src="/pics/ah.png" width="100%" height="auto" />
+                <img src="/pics/ah.png" height="100%" width="auto"   />
                
             </div> <div class="box">
-                <img src="/pics/grades.png" width="100%" height="auto" />
+                <img src="/pics/grades.png" height="100%" width="auto"   />
                
             </div> <div class="box">
-                <img src="/pics/mld.png" width="100%" height="auto" />
+                <img src="/pics/mld.png" height="100%" width="auto"   />
                
             </div>
             <div class="box">
-                <img src="/pics/policy.png" width="100%" height="auto" />
+                <img src="/pics/policy.png" height="100%" width="auto"   />
                
             </div>
                         <!-- REPEAT -->
 
                         <div class="box">
-                            <img src="/pics/chess.png" width="100%" height="auto" />
+                            <img src="/pics/chess.png" height="100%" width="auto"   />
                            
                         </div> <div class="box">
-                            <img src="/pics/ah.png" width="100%" height="auto" />
+                            <img src="/pics/ah.png" height="100%" width="auto"   />
                            
                         </div> <div class="box">
-                            <img src="/pics/grades.png" width="100%" height="auto" />
+                            <img src="/pics/grades.png" height="100%" width="auto"   />
                            
                         </div> <div class="box">
-                            <img src="/pics/mld.png" width="100%" height="auto" />
+                            <img src="/pics/mld.png" height="100%" width="auto"   />
                            
                         </div>
                         <div class="box">
-                            <img src="/pics/policy.png" width="100%" height="auto" />
+                            <img src="/pics/policy.png" height="100%" width="auto"   />
                            
                         </div>
-        </marquee>
-      </div>
+                    </div>
       <script>
-      
+       document.addEventListener("DOMContentLoaded", function() {
+  const scrollContainer = document.querySelector('.column');
+  const scrollContent = document.querySelector('.box');
 
+  // Clone original content to the end of the container
+  // scrollContent.innerHTML += scrollContent.innerHTML;
+
+  // Define animation function
+  function scroll() {
+    if (scrollContainer.scrollLeft >= scrollContent.offsetWidth / 2) {
+      scrollContainer.scrollLeft -= scrollContent.offsetWidth / 2;
+    } else {
+      scrollContainer.scrollLeft += 1;
+    }
+  }
+
+  // Start scrolling animation
+  let scrollInterval = setInterval(scroll, 25);
+
+  // Pause scrolling animation when mouse is over the container
+  scrollContainer.addEventListener('mouseover', function() {
+    clearInterval(scrollInterval);
+  });
+
+  // Resume scrolling animation when mouse leaves the container
+  scrollContainer.addEventListener('mouseout', function() {
+    scrollInterval = setInterval(scroll, 50);
+  });
+});
       </script>
 
 </body>
