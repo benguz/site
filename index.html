@@ -119,15 +119,19 @@ span {
     font-weight: 400;
 }
 .example-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 5px;
-        margin-right: 20px;
-        margin-left: 10px;
-        -webkit-flex: 0 0 auto;
-        flex: 0 0 auto;
-        min-height: 0
+        /* display: flex;
+        flex-direction: column; */
+        /*         align-items: center;
+ */
+    display: inline-block; /* Allows for horizontal layout without flex */
+    vertical-align: top;
+    margin: 5px;
+    margin-right: 20px;
+    margin-left: 10px;
+    -webkit-flex: 0 0 auto;
+    flex: 0 0 auto;
+    min-height: 0;
+    height: calc(100% - 30px);
 
     }
     .example-container:first-of-type {
@@ -142,16 +146,14 @@ span {
     }
 .example {
     border-radius: 20px;
-    max-height: 93%;
-    /* flex: 0 0 auto; */
+    max-height: 100%;
     min-height: 0;
     -moz-box-shadow: 0 0 5px #ccc;
--webkit-box-shadow: 0 0 5px #ccc;
-box-shadow: 0 0 5px #ccc;
+    -webkit-box-shadow: 0 0 5px #ccc;
+    box-shadow: 0 0 5px #ccc;
+    object-fit: cover;
 }
-/* .example:first-of-type {
-    margin-left: 20px;
-} */
+
 /* .mobile {
     width: 200px;
 }
@@ -159,8 +161,9 @@ box-shadow: 0 0 5px #ccc;
     width: 400px;
 } */
 .examples {
-    display: flex;
-    flex-direction: row;
+    /* display: flex;
+    flex-direction: row; */
+
     min-width: 100%;
     overflow-x: auto;
     white-space: nowrap;
