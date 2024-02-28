@@ -30,8 +30,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
      -->
     <link rel="preload" href="/examples/conflict.webp" as="image">
-    <link rel="preload" href="/examples/break.webp" as="image">
-    <link rel="preload" href="/examples/search.png" as="image">
+    <link rel="preload" href="/examples/fathom.webp" as="image">
+    <link rel="preload" href="/pics/pitch.png" as="image">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet"> -->
@@ -142,7 +142,10 @@ span {
         margin: 0;
         margin-top: 8px;
         text-align: left;
-        /* Style your captions as needed */
+        color: #5c5c5c
+    }
+    .caption:hover {
+        cursor: pointer;
     }
 .example {
     border-radius: 20px;
@@ -228,15 +231,18 @@ button:hover {
 
 @media screen and (max-width: 768px) {
     button {
-        top: calc(200px + 20vh);
+        top: calc(200px + 21vh);
     }
     .examples {
-        height: 40vh;
+        height: 42vh;
     }
     .description, .left p {
         width: 100%;
         margin: auto;
         padding-right: 20px;
+    }
+    .caption {
+        font-size: 10pt;
     }
 }
 </style>
@@ -250,56 +256,55 @@ button:hover {
             
             <div class="example-container" >
                             <img class="example mobile" src="/examples/conflict.webp" height="93%" width="auto">
-                            <p class="caption">fix.school</p></div>        
-        
+                            <p class="caption" onclick="window.open('https://fix.school/doorstops/conflict')">fix.school</p></div>        
+                            <div class="example-container" >
+                                <img class="example pc" src="/examples/fathom.webp" height="93%" width="auto">
+                       <p class="caption" onclick="window.open('https://fathomcode.com')">fathomcode.com</p>
+                   </div>    
                 <div class="example-container" >
-                     <img class="example pc" src="/examples/break.webp" height="93%" width="auto">
-                    <p class="caption">10 minute break</p>
-        </div>
-               
-                <div class="example-container" >
-                    <img class="example pc" src="/examples/search.png" height="93%" width="auto">
-                    <p class="caption">fix.school</p>
-                </div>               
-
+                    <img class="example pc" src="/pics/pitch.png" height="93%" width="auto">
+           <p class="caption" onclick="window.open('https://www.figma.com/proto/9JP61YENFBHh3UUUfMNj3t/Pitch-Haiku?node-id=33-2&mode=design&t=hxKwPSoRDuQvYLbT-1')">Next Gen Admit Slides</p></div>               
                 <div class="example-container" >
                     <img class="example mobile" src="/examples/dashboard.webp" height="93%" width="auto">
-                    <p class="caption">fix.school</p>
-                </div>               
-            <div class="example-container" >
-                     <img class="example pc" src="/examples/promptoctopus.webp" height="93%" width="auto">
-                    <p class="caption">promptoctopus.com</p>
-                </div>               
-<div class="example-container" >
-             <img class="example mobile" src="/examples/referents.webp" height="93%" width="auto">
-            <p class="caption">fix.school</p>
-        </div>               
+                    <p class="caption"  onclick="window.open('https://fix.school/dashboard')">fix.school</p>
+                </div>                           
         <div class="example-container" >
                      <img class="example pc" src="/examples/blob.png" height="93%" width="auto">
-            <p class="caption">loveisblob.com</p>
+            <p class="caption"  onclick="window.open('https://loveisblob.com')">loveisblob.com</p>
+        </div>           
+        <div class="example-container" >
+            <img class="example pc" src="/examples/break.webp" height="93%" width="auto">
+            <p class="caption" onclick="window.open('https://fix.school/doorstops/10minutebreak')">10 minute break</p>
+        </div>    
+        <div class="example-container" >
+            <img class="example pc" src="/examples/search.png" height="93%" width="auto">
+            <p class="caption" onclick="window.open('https://fix.school/search')">fix.school</p>
+        </div>      
+        <div class="example-container" >
+            <img class="example mobile" src="/examples/referents.webp" height="93%" width="auto">
+           <p class="caption"  onclick="window.open('https://fix.school/doorstops/ref')">fix.school</p>
+       </div>   
+        <div class="example-container" >
+            <img class="example pc" src="/examples/promptoctopus.webp" height="93%" width="auto">
+           <p class="caption"  onclick="window.open('https://promptoctopus.com')">promptoctopus.com</p>
+       </div>               
+        <div class="example-container" >
+            <img class="example pc" src="/pics/chess.png" height="93%" width="auto">
+            <p class="caption" onclick="window.open('https://benguz.github.io/chess')">benguz.github.io/chess</p>
         </div>               
             <div class="example-container" >
-                     <img class="example pc" src="/examples/fathom.webp" height="93%" width="auto">
-            <p class="caption">fathomcode.com</p>
-        </div>               
-        <div class="example-container" >
-                     <img class="example pc" src="/pics/chess.png" height="93%" width="auto">
-            <p class="caption">benguz.github.io/chess</p></div>               
-<div class="example-container" >
-                     <img class="example pc" src="/pics/pitch.png" height="93%" width="auto">
-            <p class="caption">NextGen Admit Slides</p></div>               
-<div class="example-container" >
-                     <img class="example pc" src="/pics/policy.png" height="93%" width="auto">
-            <p class="caption">fix.school</p></div>               
-<div class="example-container" >
-                     <img class="example pc" src="/pics/grades.png" height="93%" width="auto">
-            <p class="caption">fix.school</p></div>               
+                <img class="example pc" src="/pics/policy.png" height="93%" width="auto">
+                <p class="caption" onclick="window.open('https://fix.school/school/flow')">fix.school</p></div>               
+            <div class="example-container" >
+                <img class="example pc" src="/pics/grades.png" height="93%" width="auto">
+                <p class="caption" onclick="window.open('https://fix.school/doorstops/grades')">fix.school</p>
+            </div>               
 <div class="example-container" >
                      <img class="example pc" src="/pics/ah.png" height="93%" width="auto">
-            <p class="caption">allisonhartley.com</p></div>               
+            <p class="caption" onclick="window.open('https://allisonhartley.com')">allisonhartley.com</p></div>               
 <div class="example-container" >
                      <img class="example pc" loading="lazy" src="/pics/potential.png" height="93%" width="auto">
-            <p class="caption">blog.benguzovsky.com/potential</p></div>
+            <p class="caption" onclick="window.open('https://blog.benguzovsky.com/potential')">blog.benguzovsky.com/potential</p></div>
         <!--        
             <div class="example-container" >
          <im            g class="example pc"
@@ -315,12 +320,12 @@ button:hover {
         <button id="scrollButton"></button>
         <button id="scrollLeft"></button>
 
-        <p style="padding: 20px;">See everything I've ever shipped <a href="/ship">here</a>!</p>
+        <p style="padding: 20px;">See everything I've ever shipped <a href="/ship" target="_blank">here</a>!</p>
       <h2 style="padding-left: 20px">I write a lot, too.</h2>
       <div class="experiences" style="padding-left: 20px">
         <div class="experience">
             <div class="left">
-                <p><a href="/pdfs/Capablanca Defeats Marshall's Attack - Guzovsky.pdf">"Capablanca Defeats Marshall's Attack"</a> — Dec 2023</p>
+                <p><a href="/pdfs/Capablanca Defeats Marshall's Attack - Guzovsky.pdf" target="_blank">"Capablanca Defeats Marshall's Attack"</a> — Dec 2023</p>
             </div>
             <div class="right">
                 <p class="description">"This is an absolutely superb final paper. The best of the lot, in my view. The chosen historical episode is rich in itself, and the question of the historicity of a chess game (with its loose "script" of possible gambits) is enchanting. Simply excellent. This paper expanded my thinking."
@@ -333,7 +338,7 @@ button:hover {
         <br>
         <div class="experience">
             <div class="left">
-                <p><a href="https://doorstopeducation.org/research/leveraged.pdf">"Learning, Leveraged by Students"</a> — Jan 2023</p>
+                <p><a href="https://doorstopeducation.org/research/leveraged.pdf" target="_blank">"Learning, Leveraged by Students"</a> — Jan 2023</p>
             </div>
             <div class="right">
                 <p class="description">I spent high school staring out the window and waiting for lunch time. I felt like there was nothing I could change about school. This report is the culmination of my nationwide research on what students can change.
@@ -343,7 +348,7 @@ button:hover {
         <br>
         <div class="experience">
             <div class="left">
-                <p><a href="https://blog.benguzovsky.com/potential">"Doorstops: Potential for more trusting schools"</a> — Sept 2022</p>
+                <p><a href="https://blog.benguzovsky.com/potential" target="_blank">"Doorstops: Potential for more trusting schools"</a> — Sept 2022</p>
             </div>
             <div class="right">
                 <p class="description">I am traveling across the country researching how trust is built, working to empower student voices.
@@ -353,7 +358,7 @@ button:hover {
         <br>
         <div class="experience">
             <div class="left">
-                <p><a href="https://brief.bismarckanalysis.com/p/pakistan-shows-the-limits-of-chinas">"Pakistan Shows the Limits of China’s Economic Power"</a> — Jun 2022</p>
+                <p><a href="https://brief.bismarckanalysis.com/p/pakistan-shows-the-limits-of-chinas" target="_blank">"Pakistan Shows the Limits of China’s Economic Power"</a> — Jun 2022</p>
             </div>
             <div class="right">
                 <p class="description">Pakistan should be the flagship success of China’s economic aid and investment programs abroad. Instead, it casts doubts on the viability of a Chinese economic world order.
@@ -363,7 +368,7 @@ button:hover {
         <br>
         <div class="experience">
             <div class="left">
-                <p><a href="https://blog.benguzovsky.com/fall_junior_paper.pdf">"Weighted Internationalism in League of Nations Hiring Practices"</a> — Jan 2022</p>
+                <p><a href="https://blog.benguzovsky.com/fall_junior_paper.pdf" target="_blank">"Weighted Internationalism in League of Nations Hiring Practices"</a> — Jan 2022</p>
             </div>
             <div class="right">
                 <p class="description">"Nothing escapes his keen analytical gaze... He has immersed himself in an incredible volume of seemingly-dry historical sources and not only wrestled them into a clear and well-structured piece of writing, but also condensed them into a pithy but substantial interpretive formula... articulated with flair."
@@ -375,7 +380,7 @@ button:hover {
         <br>
         <div class="experience">
             <div class="left">
-                <p><a href="https://www.nasslit.com/home/2020/11/16/bot-poetry-engineering-randomness">"Bot Poetry: Engineering Randomness"</a> — Nov 2020</p>
+                <p><a href="https://www.nasslit.com/home/2020/11/16/bot-poetry-engineering-randomness" target="_blank">"Bot Poetry: Engineering Randomness"</a> — Nov 2020</p>
             </div>
             <div class="right">
                 <p class="description"> I created a haiku-generating algorithm and argued that the future of great writing isn't human, computer, or computer-trying-to-emulate-human, it's human-computer collaboration.
@@ -392,9 +397,9 @@ button:hover {
             </div>
             <div class="left">
                 <ul>
-                    <li>One-pager on <a href="/pdfs/ai-imbalances.pdf">asymetric impacts of AI on marketplaces</a> like Fiverr and UpWork</li>
-                    <li>A post on <a href="/pdfs/SEO-Friendly Content.pdf">scrappy search engine optimization</a></li>
-                    <li>On <a href="https://fix.school/scale">things that don't scale</a></li>
+                    <li>One-pager on <a href="/pdfs/ai-imbalances.pdf" target="_blank">asymetric impacts of AI on marketplaces</a> like Fiverr and UpWork</li>
+                    <li>A post on <a href="/pdfs/SEO-Friendly Content.pdf" target="_blank">scrappy search engine optimization</a></li>
+                    <li>On <a href="https://fix.school/scale" target="_blank">things that don't scale</a></li>
                 </ul>
             </div>
             
