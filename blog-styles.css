@@ -42,7 +42,7 @@ h1 {
 }
 
 .content-section {
-    width: 55%;
+    width: 52.5%;
     margin: 0 auto;
     padding-bottom: 2rem;
 }
@@ -60,7 +60,7 @@ h1 {
     width: 100%;
     height: auto;
     border-radius: 8px;
-    margin: 2.5rem 0 0.5rem 0;
+    margin: 0.5rem 0 0.5rem 0;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
@@ -148,6 +148,93 @@ ol li::marker {
     font-weight: 600;
 }
 
+/* Code Blocks */
+.code-block {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 6px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    overflow-x: auto;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.code-block code {
+    color: #d4d4d4;
+    white-space: pre;
+    display: block;
+}
+
+/* Inline Code */
+.content-section code {
+    background-color: #f5f5f5;
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9em;
+    color: #2a2a2a;
+}
+
+.code-block code {
+    background-color: transparent;
+    padding: 0;
+    color: #d4d4d4;
+}
+
+/* Footnotes */
+.footnotes {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid #ccc;
+}
+
+.footnote-item {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    color: #555;
+}
+
+.footnote-item sup {
+    margin-right: 0.5rem;
+}
+
+sup a {
+    text-decoration: none;
+    color: #4a90e2;
+    font-weight: 600;
+}
+
+sup a:hover {
+    text-decoration: underline;
+}
+
+/* Headers */
+h2 {
+    font-family: 'Lora', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 2.5rem 0 1.5rem 0;
+    color: #1a1a1a;
+    line-height: 1.3;
+}
+
+h3 {
+    font-family: 'Lora', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 2rem 0 1rem 0;
+    color: #1a1a1a;
+    line-height: 1.3;
+}
+
+/* Bold text */
+strong {
+    font-weight: 600;
+}
+
 /* Footer */
 .footer {
     height: 40vh;
@@ -221,6 +308,31 @@ ol li::marker {
 
     .footer {
         height: 30vh;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        margin: 2rem 0 1rem 0;
+    }
+
+    h3 {
+        font-size: 1.25rem;
+        margin: 1.5rem 0 0.75rem 0;
+    }
+
+    .code-block {
+        padding: 1rem;
+        margin: 1.5rem 0;
+        font-size: 0.85rem;
+    }
+
+    .footnotes {
+        margin-top: 3rem;
+        padding-top: 1.5rem;
+    }
+
+    .footnote-item {
+        font-size: 0.9rem;
     }
 }
 
