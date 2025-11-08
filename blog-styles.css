@@ -1,0 +1,252 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: whitesmoke;
+    color: #1a1a1a;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Desktop Layout */
+.blog-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0;
+}
+
+.title-section {
+    width: 100%;
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+h1 {
+    font-family: 'Lora', serif;
+    font-size: 3.5rem;
+    font-weight: 600;
+    text-align: center;
+    color: #1a1a1a;
+    max-width: 800px;
+    line-height: 1.2;
+}
+
+.content-section {
+    width: 55%;
+    margin: 0 auto;
+    padding-bottom: 2rem;
+}
+
+/* Typography */
+.content-section p {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    color: #2a2a2a;
+}
+
+/* Images */
+.blog-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 2.5rem 0 0.5rem 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Caption */
+.caption {
+    font-size: 0.9rem;
+    color: #666;
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    line-height: 1.4;
+}
+
+/* Big Block Quote */
+.big-quote {
+    font-family: 'Lora', serif;
+    font-size: 1.75rem;
+    line-height: 1.6;
+    margin: 3rem 0;
+    padding: 2rem 3rem;
+    position: relative;
+    color: #2a2a2a;
+}
+
+.big-quote::before {
+    content: '"';
+    font-size: 5rem;
+    color: #4a90e2;
+    position: absolute;
+    left: 0;
+    top: -0.5rem;
+    line-height: 1;
+}
+
+.big-quote::after {
+    content: '"';
+    font-size: 5rem;
+    color: #4a90e2;
+    position: absolute;
+    right: 0;
+    bottom: -1.5rem;
+    line-height: 1;
+}
+
+/* Subtle Block Quote */
+.subtle-quote {
+    border-left: 4px solid #4a90e2;
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+    color: #444;
+    font-style: italic;
+}
+
+.subtle-quote p {
+    margin-bottom: 0.5rem;
+}
+
+/* Lists */
+ul, ol {
+    margin: 1.5rem 0;
+    padding-left: 2rem;
+}
+
+ul li, ol li {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    margin-bottom: 0.75rem;
+    color: #2a2a2a;
+}
+
+ul li {
+    list-style-type: disc;
+}
+
+ul li::marker {
+    color: #4a90e2;
+}
+
+ol li {
+    list-style-type: decimal;
+}
+
+ol li::marker {
+    color: #4a90e2;
+    font-weight: 600;
+}
+
+/* Footer */
+.footer {
+    height: 40vh;
+    width: 100%;
+    background-color: whitesmoke;
+}
+
+/* Mobile Styles */
+@media screen and (max-width: 768px) {
+    .title-section {
+        min-height: auto;
+        padding: 3rem 1rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+        line-height: 1.3;
+    }
+
+    .content-section {
+        width: 100%;
+        padding: 0 1rem 2rem 1rem;
+    }
+
+    .content-section p {
+        font-size: 1rem;
+        line-height: 1.7;
+        margin-bottom: 1.25rem;
+    }
+
+    .blog-image {
+        margin: 2rem 0 0.5rem 0;
+    }
+
+    .caption {
+        font-size: 0.85rem;
+        margin-bottom: 2rem;
+    }
+
+    .big-quote {
+        font-size: 1.25rem;
+        padding: 1.5rem 2rem;
+        margin: 2rem 0;
+    }
+
+    .big-quote::before {
+        font-size: 3.5rem;
+        top: -0.25rem;
+    }
+
+    .big-quote::after {
+        font-size: 3.5rem;
+        bottom: -1rem;
+    }
+
+    .subtle-quote {
+        padding-left: 1rem;
+        margin: 1.5rem 0;
+    }
+
+    ul, ol {
+        padding-left: 1.5rem;
+        margin: 1.25rem 0;
+    }
+
+    ul li, ol li {
+        font-size: 1rem;
+        line-height: 1.7;
+        margin-bottom: 0.5rem;
+    }
+
+    .footer {
+        height: 30vh;
+    }
+}
+
+/* Tablet Styles */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .content-section {
+        width: 70%;
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+}
+
+/* Large Desktop Styles */
+@media screen and (min-width: 1920px) {
+    .content-section {
+        width: 50%;
+    }
+
+    h1 {
+        font-size: 4rem;
+    }
+
+    .content-section p {
+        font-size: 1.25rem;
+    }
+}
+
