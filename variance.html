@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title>LLMs suck at variance</title>
+    <meta name="title" content="LLMs suck at variance">
+    <meta name="description" content="Language models struggle with high variance tasks. Here's why.">
+    <link rel="shortcut icon" href="/favicon/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Blog Styles -->
+    <link rel="stylesheet" href="/blog-styles.css">
+    
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-DALALMGEq95sSTulrzwgY.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
+</head>
+<body>
+    <div class="blog-container">
+        <!-- Title Section -->
+        <div class="title-section">
+            <h1>LLMs suck at variance.</h1>
+        </div>
+
+        <!-- Content Section -->
+        <div class="content-section">
+            <p>LLMs seem pretty smart. They are acing the international math olympiad, making award-winning art humans, and ranking in the top ten in international coding competitions.<sup id="ref-1"><a href="#footnote-1">[1]</a></sup></p>
+
+            <p>Language models have really struggled at tasks where, given these achievements, you'd expect them to excel:</p>
+
+            <ul>
+                <li>Clicking around on a website (e.g. going through a checkout flow, using google sheets in the browser)<sup id="ref-2"><a href="#footnote-2">[2]</a></sup></li>
+                <li>Creating simple, accurate deliverables for desk jobs (e.g. research reports, provisional patent applications)</li>
+                <li>Playing games like chess (didn't we solve this already?) and Pokemon</li>
+            </ul>
+
+            <p>They help humans do these tasks much faster, but can't do them end to end. The Computer Use model can't find the right button to click on the page, the Deep Research report has hallucinations and jumbled points, and GPT-5 plays illegal chess moves without realizing.</p>
+
+            <h2>Why are these simple tasks so hard for models?</h2>
+
+            <p><strong>1. They are often performed without a large "harness," a set of custom tools that make the task easier.</strong></p>
+
+            <p>Cursor is a harness for coding, giving LLMs a set of functions (grep, patch, vector search, web search) it can use to understand and edit code. If you want to help an LLM play chess better, a simple harness might involve giving it a list of legal moves to choose from.</p>
+
+            <p>Harnesses help LLMs excel: the stronger the harness, the easier the task becomes. Nobody has built a good harness for clicking around on a website yet.</p>
+
+            <p><strong>2. They are often performed without a dedicated training effort.</strong></p>
+
+            <p>The models got good at coding and math because engineers at OpenAI and Anthropic put plenty of good coding and math examples in the training data. No similar curation effort has taken place for most everyday digital tasks.</p>
+
+            <p>If the internet is main the training set for language models:</p>
+
+            <ul>
+                <li>They have seen 10 bad research reports for every good one. They have a hard time telling the difference.</li>
+                <li>They have seen very few computer screens in their training, as the text from the pages was fed into them directly. They don't know how to click around on a website.</li>
+            </ul>
+
+            <p><strong>3. These tasks have high variance, meaning that to succeed at them often, you need to know a wide variety of details, tricks, and unwritten rules.</strong></p>
+
+            <p>Each time you perform a "high variance" task like navigating a website checkout flow, it changes shape. Buying shoes on <a href="http://etsy.com" target="_blank">etsy.com</a> is different from buying shoes on a website made in 2008.</p>
+
+            <p>Clicking on a website requires handling thousands of complexities (ignoring popups, clicking back and forth, knowing when to scroll, telling the difference between errors and slow loading) and has to work on <em>any website</em>. Navigating websites is easier than navigating a computer (a collection of websites, apps, folders, notifications). Navigating a computer is easier than performing tasks on one, because you have to navigate thousands of combinations of these computer windows <em>and</em> do the task.</p>
+
+            <img src="/images/variance_bar.webp" alt="Variance diagram" class="blog-image">
+
+            <p>We can always add better harnesses and training data, but we cannot escape the high variance in new tasks. In technical terms, high variance tasks will <em>always</em> have a high rate of out-of-distribution examples, even if your training set is very large.</p>
+
+            <h2>Real-world tasks have high variance.</h2>
+
+            <p>Competition math problems are not. Math is really, really hard, but you don't have to ask Dave for the Notion doc with reference material. You don't have to figure out whether the button is broken or you are just not clicking it right. If you learn more math and practice more math, you will solve more of the types of self-contained, but tricky problems you see in the international math olympiad.</p>
+
+            <img src="/images/variance_shapes.webp" alt="Competitive programming patterns" class="blog-image">
+            <p class="caption">Competitive programming problems have common patterns across questions. There is much more variance between websites.</p>
+
+            <img src="/images/variance_plot.webp" alt="Problem distribution comparison" class="blog-image">
+            <p class="caption">By solving the most common competitive programming problems, you solve the majority. In contrast, by solving the most common website navigation tasks, you solve navigation for a small fraction of websites.</p>
+
+            <p>This is a bit like the difference between sciences and the humanities in college. Physicists have to constantly learn new <em>concepts</em> and skills to progress; History majors have to learn new <em>content</em>, but the only skill they need is writing a good essay, which is their final assignment in every class.<sup id="ref-4"><a href="#footnote-4">[4]</a></sup> Physicists have to leverage those new concepts to get the right answer: you must take a specific reasoning step in your proof to solve it. English majors could take 1,000 different, equally good approaches to an essay: each must be read cover-to-cover to understand its merit.</p>
+
+            <p>Real world tasks are messy. Even if you understand how to write a research report, you have to understand the content you are writing about, pull from dozens of information sources (some of which are easy to access, others are hidden internally in your company), ask questions, scrutinize poorly formatted data and sniff out errors, and write in the particular style your company requires.</p>
+
+            <p>To perform well, you cannot build a model that is a "good researcher" and a "good writer" because most of the tasks required to be successful are high variance. Success is highly contextual:</p>
+
+            <ul>
+                <li>For Company A, a report should be 5 pages, for Company B it should be 500.</li>
+                <li>At Company C, only one person has been writing these reports for 20 years and they retired a month ago, so there is no documentation for best practice—as you look through their reports, you don't understand which parts are mistakes and which parts are the company's eccentric preferences.</li>
+                <li>Company D has scattered documentation, which you have to traverse Slack, Google Doc comments, and of course the annual four week employee onboarding course, which is not recorded and won't run again until September.</li>
+                <li>At Company E, people have all been working there for so long that they don't realize their specific requests are unintuitive, and don't help you when you're confused.</li>
+            </ul>
+
+            <p>Each individual company has its own task variance. For them to implement an AI report-writer as more than a helpful starting point, they'll need to do the following:</p>
+
+            <ul>
+                <li>Gather and/or write documentation</li>
+                <li>Identify unwritten rules they have been following, and write them down</li>
+                <li>Gather a set of exemplar reports and write down why they are exemplar</li>
+                <li>Put someone in charge of evaluating the model's performance and fleshing out documentation where needed</li>
+            </ul>
+
+            <h2>Evals are critical for high variance tasks, but they're tricky.</h2>
+
+            <p>To check if a model got a competitive programming problem right, you check if model_answer == correct_answer. Done. To check if a report is good, you have to read it. For math problems, you can run thousands of training iterations until it gets the right answer. Since you need a human in the loop to read reports… running multiple iterations will be trickier.</p>
+
+            <p>There is a middle ground, where you write a rubric for your task, then have a "grader" model, another LLM, grade your model's performance, assigning a score from 0-1.</p>
+
+            <ol>
+                <li>For long form tasks, the grader won't be able to catch all of a model's mistakes. The model may have misinterpreted a source, or broken an unwritten rule that wasn't in the documentation, or taken a task in an internally coherent, but ultimately wrong direction.</li>
+                <li>Graders are still time intensive: first you have to make sure your grader grades correctly, then make sure its grading "works" and improves the model's performance.</li>
+            </ol>
+
+            <p>Even if you use a grader, you will need to tune your model and tune your documentation, since your task is too custom for the model to ace it the first time. Next, you need to regularly check in on your model's performance and audit its results, or it will "drift" towards worse performance over time.</p>
+
+            <p><strong>Why do you need all of these evals?</strong> Think of the model like a man living with a woman for the first time. He thought he knew how to do the dishes—until she told him they were in the completely wrong places. The man learns over time, with painful memories of his mistakes. This can take years… and some never learn.</p>
+
+            <p>Tasks, even simple ones like the dishes, have a long tail of details you need to know to succeed, and these details are not written down.</p>
+
+            <p><strong>Is there a shortcut?</strong> Not in the traditional sense. Good computer use capabilities and better model "memory" will speed this process up, and we could skip a few steps here if the models became smart enough to be full time employees—or someone invents a new model architecture. Employee-caliber models seem hard to build without first going through this evaluation process on many challenging, high variance tasks.<sup id="ref-5"><a href="#footnote-5">[5]</a></sup></p>
+
+            <!-- Footnotes -->
+            <div class="footnotes">
+                <div class="footnote-item" id="footnote-1">
+                    <sup><a href="#ref-1">[1]</a></sup> <a href="https://techcrunch.com/2025/03/06/a-quarter-of-startups-in-ycs-current-cohort-have-codebases-that-are-almost-entirely-ai-generated/" target="_blank">https://techcrunch.com/2025/03/06/a-quarter-of-startups-in-ycs-current-cohort-have-codebases-that-are-almost-entirely-ai-generated/</a>
+                </div>
+                <div class="footnote-item" id="footnote-2">
+                    <sup><a href="#ref-2">[2]</a></sup> Where is the checkout button? Is it a button element or a div? Is it not an element at all and entirely javascript? Do you have to scroll to see it? Are there seven other distracting buttons on the page? Did a popup come up while the model was thinking, preventing it from clicking anywhere? Can you enter in the 15 form fields for shipping information, then fix the vague form validation errors? Many companies are working on this (OpenAI has made its own browser to collect enough training data) but the problem is unsolved.
+                </div>
+                <div class="footnote-item" id="footnote-3">
+                    <sup><a href="#ref-3">[3]</a></sup> <a href="https://mlq.ai/media/quarterly_decks/v0.1_State_of_AI_in_Business_2025_Report.pdf" target="_blank">https://mlq.ai/media/quarterly_decks/v0.1_State_of_AI_in_Business_2025_Report.pdf</a>
+                </div>
+                <div class="footnote-item" id="footnote-4">
+                    <sup><a href="#ref-4">[4]</a></sup> Note that in real life, scientists also face similar content problems where information is sparse and research taste is hard to train. Language models are not there yet, only working in theoretical math and science problems.
+                </div>
+                <div class="footnote-item" id="footnote-5">
+                    <sup><a href="#ref-5">[5]</a></sup> Claude Skills, an easy way to give an LLM guidelines for a task, is a step in the right direction, but is also just a prompt and does not help with evals. <a href="https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills" target="_blank">https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Large Footer -->
+        <div class="footer"></div>
+    </div>
+</body>
+</html>
+
