@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title>The End of the Train-Test Split - Ben Guzovsky</title>
+    <meta name="title" content="The End of the Train-Test Split - Ben Guzovsky">
+    <meta name="description" content="The train-test split does not work for classification tasks at the frontier of LLM capability.">
+    <link rel="shortcut icon" href="/favicon/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Blog Styles -->
+    <link rel="stylesheet" href="/blog-styles.css">
+    
+    <script defer data-domain="benguzovsky.com" src="https://plausible.io/js/script.js"></script>
+</head>
+<body>
+    <div class="blog-container">
+        <!-- Title Section -->
+        <div class="title-section">
+            <h1>The End of the Train-Test Split</h1>
+        </div>
+
+        <!-- Content Section -->
+        <div class="content-section">
+            <h2>2015: Loosely based on a true story.</h2>
+
+            <p>You are a machine learning engineer at Facebook in Menlo Park. Your task: build the best butt classification model, which decides if there is an exposed butt in an image.            </p>
+
+            <p>The content policy team in D.C. has decided to deploy country-specific censorship rules based on cultural tolerance for gluteal cleft—or butt crack, for the uninitiated.</p>
+
+            <ul>
+                <li>Germany: 0% cleft.</li>
+                <li>Zimbabwe: 30% cleft.</li>
+                <li>Cupertino: 0%.</li>
+                <li>Montana: 20%.</li>
+            </ul>
+
+            <p>A PM on your team writes data labeling guidelines for a business process outsourcing firm (BPO), and each example in your dataset is triple-reviewed by the firm's outsourced team to ensure consistency. You skim the labels, which seem reasonable.</p>
+
+            <div class="code-block"><code>import torch
+import pandas as pd
+from torch.utils.data import DataLoader, TensorDataset
+from sklearn.model_selection import train_test_split
+
+df = pd.read_csv("gluteal_cleft_labels.csv")
+X = df.drop("label", axis=1).values
+y = df["label"].values
+
+x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)</code></div>
+
+            <p>You decide to train a CNN: it'll be perfect for this edge detection task. Two months later, you've cracked it. Your model goes live, great success, 92% precision, 98% recall. You never once had to talk to the policy team in D.C.</p>
+
+            <h2>2023: The butt model has been in production for 8 years.</h2>
+
+            <p>Another email comes in from the policy team in D.C. They’ve heard about LLMs and think it’s time to build a more “context-aware” model. They would like the model to understand whether there is sexually suggestive posing, sexual context, or artistic intent in the image.             </p>
+
+            <p>You receive a 10 page policy doc. The PM cleans it up a bit and sends it to the BPO. The data is triple reviewed, you skim the labels, and they seem fine.</p>
+
+            <p>You make an LLM decision tree, one LLM call per policy section, and aggregate the results. Two months pass. You are stuck at 85% precision and recall, no matter how much prompt engineering and model tuning you do. You decide to try going back to a CNN and training it on the labels. It scores 83%.</p>
+
+            <p>Your data science spidey-sense tingles. Something is wrong with the labels or the policy.</p>
+
+            <p>You email the policy team, sending them the dataset and results. A meeting is scheduled.</p>
+
+            <p>The East Coast Metamates say they looked at 20 of the labels. 60% were good, 20% were wrong, 20% were edge cases they hadn’t thought of.</p>
+
+            <p>The butt model lives to fight another day, or at least until these discrepancies get sorted out.</p>
+
+            <h2>2025.</h2>
+
+            <p>The butt model is still in production… What went wrong?</p>
+
+            <h3><strong>The train-test split does not work for classification tasks at the frontier of LLM capability.</strong></h3>
+
+            <p>It doesn't matter if the task is content policy, sales chatbots, legal chatbots, or AI automation in any other industry.</p>
+
+            <p><strong>Test Split:</strong> Any task complicated enough to require an LLM will need policy expert labels.<sup id="ref-1"><a href="#footnote-1">[1]</a></sup> To detect nudity, outsourced labels will do, but to enforce a 10 page adult policy, you need the expert. Experts have little time, and can't give you enough labels to run your high scale training runs. You can't isolate enough data for a test set without killing your training set size. On top of that, a 10 page policy comes with so much gray area that you can’t debug test set mistakes without looking at the test set results and model explanations.</p>
+
+            <p><strong>Train Split:</strong> You no longer need a large, isolated training set because LLMs often don't need to be <em>trained</em> on data: they need to be given clear rules in natural language, and maybe 5-10 good examples.<sup id="ref-2"><a href="#footnote-2">[2]</a></sup> Today, accuracy improvements come from an engineer better understanding the classification rules, and better explaining it to the model, not from tuning hyperparameters or trying novel RL algorithms. Is a discrepancy between the LLM result and the ground truth due to the LLM’s mistake, the labeler’s mistake, or an ambiguous policy line? This requires unprecedented levels of communication between policy and engineering teams.</p>
+
+            <p><strong>Recommending a New Split:</strong> Don’t train the LLM on any of the dataset. Address the inevitable biases with evaluation on blind, unlabeled data.<sup id="ref-3"><a href="#footnote-3">[3]</a></sup> To understand why this is the best approach, we need to dive deeper into why the train-test split paradigm doesn't suffice.</p>
+
+            <h3>Core problems with complex classification tasks</h3>
+
+            <p><strong>Policy Experts write abstract rules.</strong> For older classification tasks, the rules <em>had</em> to be simple, because simple was all that models could do. Are there guns in the image? Is there a minor in the image? Complicated tasks are harder to pin down.</p>
+
+            <ul>
+                <li>What is hate speech?</li>
+                <li>What is sexually suggestive?</li>
+                <li>What makes false advertising cross from overdone to illegal?</li>
+            </ul>
+            <p>Take these examples. Sexually suggestive? Artistic expression? Sufficient censorship?</p>
+            <img src="/images/solar_power.webp" alt="Policy example" class="blog-image">
+            <p class="caption">Source: Lorde's album covers from Vice.com, where there is some debate on what is visible in both photos.</p>
+
+            <p><strong>Most policy documents are not well-kept.</strong> A content policy is typically simplified, operationalized, and sent to outsourced teams to enforce. Edge cases and discrepancies found in India never make it back to policy teams in DC, so abstract rules are rarely pinned down.</p>
+
+            <p>In production, we see 15-20% false positive rates on BPOs. Half are attributable to human error, half to policy gray area.</p>
+
+            <p><strong>To resolve edge cases, labeling tasks require an expert's time.</strong> BPO agents can eyeball how much butt is visible, but struggle with what is "sexually suggestive." BPOs are minimum-wage workers in countries like India or the Phillipines, and may have different definitions of "sexual context" than the policy writers intended.</p>
+
+            <p>Using in-house agents is not sufficient for training data, either, as small alignment issues in the dataset cause large issues in production: If internal agents are 95% accurate (pretty good), the ceiling for the LLM's performance is 95%. If the LLM gets 95% of <em>those</em> labels right, its accuracy will be 90%.</p>
+
+            <p><strong>Hard classification tasks have high rates of expert disagreement.</strong> Ask two people if there's a gun in an image, odds are they'll agree. Ask two policy experts whether a pose is sexually suggestive per their definition, you will start a one hour debate. If two experts only agree 95% of the time, then hand off to internal agents for labeling at 95% accuracy, then the LLM is 95% accurate, you are down to 86% LLM accuracy.</p>
+
+            <p><strong>Language models see details in data that even experts miss.</strong> LLMs read every word of the product description. They scrutinize every image for a single pixel of gluteal cleft. They see gluteal cleft through sheer clothing, in low opacity, and in the bottom left corner of the back of a t-shirt. Even if experts have reviewed the data, there must be a re-review and feedback loop to check what the LLM has flagged.</p>
+
+            <p><strong>Since labels are often wrong or ambiguous, you cannot keep the test set blind.</strong> If the LLM is right and the labels are wrong, either because the expert missed something, the policy was ambiguous, or the outsourced labeler was wrong, you have to look at the test set results to check. Moreover, you need to review the LLM's explanation <em>while</em> reviewing the new data to see what it found, confounding any true "blind" test.<sup id="ref-4"><a href="#footnote-4">[4]</a></sup></p>
+
+            <p>In production, we see anywhere from 15-30% error rates in data considered "golden sets" by operations teams.</p>
+
+            <p><strong>Given the need for expert input and policy clarifications, you cannot maintain large enough training sets to keep the test set blind.</strong> For a simple policy, maintaining good labeled data is straightforward. However, attempting to integrate an LLM is often the first time a policy expert will be asked to scrutinize their rules and labels. Their time is valuable, and they will not be able to bring their expertise to a large dataset.</p>
+
+            <p>Complicated policies change, especially under scrutiny, and re-labeling affected examples is time-consuming. A leaner training set will be more valuable than a larger one in the long run.</p>
+
+            <p><strong>Since these classification tasks are so complex, you can only "debug" the model by looking at the input and its explanations side-by-side.</strong> A policy might have dozens of rules and thousands of possible inputs, creating a fat-tail of model mistakes. Unlike traditional machine learning, where you fix mistakes by changing the design or hyperparameters of your model, you fix LLM mistakes by changing the prompt. You can <em>directly</em> fix a mistake (e.g. by telling the model "do not consider spreading legs fully clothed to be sexually suggestive"), so keeping mistakes hidden only hurts accuracy.<sup id="ref-5"><a href="#footnote-5">[5]</a></sup></p>
+
+            <p><strong>You still need to run blind tests: QA the models on new data.</strong> Organizations end up running their models in "shadow mode" on production data, creating test examples without taking real-world actions. Here, you'll likely need an in-house agent to review the examples, then forward edge cases to a policy expert.</p>
+
+            <p><strong>The Policy and Engineering Teams Need to be in Direct, Frequent Communication.</strong> The SF-DC split doesn't work anymore. Resolving edge cases and, in many cases, changing the policy to reflect patterns identified in the data requires collaboration.</p>
+
+            <p><strong>Experts have historically not needed to look at the data—seen as a low-status task—but it is the only way to achieve high accuracy.</strong> This is an unsolved problem in many large organizations that blocks LLM integrations.</p>
+
+            <p><strong>Most importantly, LLMs do not "train" on data the way traditional classifiers do, so there is often no need to have a "training" set, either.</strong> LLMs can enforce complicated, natural language rules because they can take natural language inputs, not because they can learn patterns from thousands of training examples. LLM accuracy is often a prompting task, not a design-your-RL-pipeline task.<sup id="ref-1-2"><a href="#footnote-1">[1]</a></sup></p>
+
+            <p>If you want a model to classify whether animals are endangered species, don't give it 1,000 examples of elephant ivory, 100 examples of every species on the CITES list, and 1,000 pictures of your non-endangered dog, give it the list of species names as inputs.</p>
+
+            <p><strong>The "training" step for language models has to be policy alignment, not heating up GPUs.</strong> Since the data will always be flawed and the test set won't be blind, the machine learning engineer's priority should be spent working with policy teams to improve the data. That means surfacing edge cases and policy gray areas, clarifying policy definitions, and leveraging LLM outputs to find more discrepancies until data is high-quality and policy is clear.</p>
+
+            <p>In production, this is an ongoing process, as LLMs will always surface new interesting cases and policies will continue to change. Policies and enforcement are better for this feedback loop: it enables consistent, scaled enforcement platform-wide.</p>
+
+            <h2>Today and Tomorrow</h2>
+
+            <p>This is a paradigm shift that many machine learning teams, and enterprises as a whole, have not yet embraced. It requires a complete change in how we approach classification tasks.</p>
+
+            <p><strong>If this is the road to automation, is it even worthwhile?</strong> The process described above, while arduous, is the shortest route to consistent policy enforcement to date. Before LLMs, running a successful quality assurance program would be prohibitively expensive. Retraining human agents takes far longer than retraining LLMs. Policy experts have historically never been owners in the loop in quality assurance processes.</p>
+
+            <p>To save a little time, an in-house human agent might do a first review of the results, then a policy expert can review only the discrepancies. We find this tradeoff works well in production.</p>
+
+            <p><strong>What are the implications for leveraging LLMs for tasks which <em>do not have binary classifications</em>?</strong> Can an LLM be a lawyer if this much work is required to align, evaluate, and test models? Will an LLM ever ~know what you mean~ and skip all these alignment steps?</p>
+
+            <p>One core problem with the LLM architecture is that it doesn't know when it is wrong. Model improvements over the past few years mean the LLM is right more often, but when it is wrong, it doesn't have an outlet.</p>
+
+            <p>This is a perennial machine learning problem: a model does not know what is "out of distribution" for itself.</p>
+
+            <p>Until that problem is solved, there will have to be an engineer in the loop improving and testing the model, and a policy expert evaluating the results. You can do this for complicated tasks like writing a patent application, but you have to be rigorous, define a rubric, curate expert data, and regularly evaluate model outputs. Calculating accuracy of each "training run" will never be as easy as checking if model_output = ground_truth, and will require a human in the loop. These complex tasks are far more lucrative than binary classification, and smart people are working on them.</p>
+
+            <p>Not everybody will take this rigorous approach, and as models improve, they might not have to. Until then, the highest leverage way to spend your time in 2026 will be looking closely at your data, cleaning your data, and labeling your data.</p>
+
+            <!-- Footnotes -->
+            <div class="footnotes">
+                <div class="footnote-item" id="footnote-1">
+                    <sup><a href="#ref-1">[1]</a></sup> A policy expert may literally be someone with “Policy” in their title, or it may be a lawyer, accountant, sales rep, or anyone else documenting a business process that needs to be automated.
+                </div>
+                <div class="footnote-item" id="footnote-2">
+                    <sup><a href="#ref-2">[2]</a></sup> Note that LLMs can be trained or tuned on specific datasets for classification tasks, especially reasoning models, but these tend to be much smaller, higher quality labels rather than scaled, medium quality labels. <i>Even in these cases, an engineer must spend a large amount of time looking at “test set” data and labels.</i>
+                </div>
+                <div class="footnote-item" id="footnote-3">
+                    <sup><a href="#ref-3">[3]</a></sup> After several runs of this prompt-based iteration following by QA on unseen, production data, you may have enough data for real LLM training on a train-test split.
+                </div>
+                <div class="footnote-item" id="footnote-4">
+                    <sup><a href="#ref-4">[4]</a></sup> Have you written the prompt wrong, is the model dumb, or is the label ambiguous/wrong?
+                </div>
+                <div class="footnote-item" id="footnote-5">
+                    <sup><a href="#ref-5">[5]</a></sup> Conversely, fixing mistakes by training the LLM on your training set (<em>a la</em> traditional ML) won't work, as the LLM can't reliably learn features that only exist in the test set.
+                </div>
+            </div>
+        </div>
+
+        <!-- Large Footer -->
+        <div class="footer"></div>
+    </div>
+</body>
+</html>
+

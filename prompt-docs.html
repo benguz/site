@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title>Documentation For Prompts - Ben Guzovsky</title>
+    <meta name="title" content="Documentation For Prompts - Ben Guzovsky">
+    <meta name="description" content="Prompts are taking over codebases. How do we maintain them?">
+    <link rel="shortcut icon" href="/favicon/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Blog Styles -->
+    <link rel="stylesheet" href="/blog-styles.css">
+    
+    <script defer data-domain="benguzovsky.com" src="https://plausible.io/js/script.js"></script>
+</head>
+<body>
+    <div class="blog-container">
+        <!-- Title Section -->
+        <div class="title-section">
+            <h1>Documentation For Prompts</h1>
+        </div>
+
+        <!-- Content Section -->
+        <div class="content-section">
+            <p>Prompts are taking over codebases. How do we maintain them? Andrej Karpathy <a href="https://www.youtube.com/watch?v=LCEmiRjPEtQ" target="_blank">talks</a> about software 1.0, 2.0, and 3.0.</p>
+
+            <img src="/images/software-code-weights-prompts.png" alt="Software evolution diagram" class="blog-image">
+            <p class="caption">Karpathy's framework for software evolution.</p>
+
+            <p>He describes how 3.0, prompts, is taking over codebases.</p>
+
+            <img src="/images/software-1-2-3.png" alt="Prompts taking over codebases" class="blog-image">
+            <p class="caption">The shift to prompt-based development.</p>
+
+            <p>We understand how to document software 1.0 (comments, docs) and 2.0 (docs, comments in your jupyter notebook), but 3.0 is tricky.</p>
+
+            <p><strong>Can't you just write docs?</strong> You can, but engineers have been tricked not to because when you write the prompt, it looks like you <em>are</em> writing docs. You are not. A prompt blends a few technical choices together, making them difficult to untangle:</p>
+
+            <ol>
+                <li>Why did you settle on this prompt? What other prompts did you try?</li>
+                <li>What is in the prompt because it is the rule (i.e. the definition of the task), and what did you add because it improved accuracy?</li>
+            </ol>
+
+            <p>Without docs answering these questions, prompts become difficult to maintain. What if you need to switch to a faster, cheaper model: which parts of the prompt are safe for you to change without affecting the exact rules the prompt is meant to follow? What if you need to change the rules: which parts can you change without harming model accuracy?</p>
+
+            <p><strong>Can't you just leave comments?</strong> You can leave them at the top of the prompt, but you can't leave them <em>in</em> your prompt.</p>
+
+            <p>You could break your prompt up into several variables and do some crazy string concatenation. This is what I recommend. I call it crazy because it kind of is, and nobody does it.</p>
+
+            <p>How do you make sure your concatenation formats everything correctly? This depends on the specifics of your codebase. Given that some concatenation is bound to happen in your prompts anyways (conditionals, all kinds of context engineering, the abstraction of your callLLM() helper function), building a way to view the exact LLM input for your prompt is productive.</p>
+
+            <p>Not a fan of this? Here are some alternatives.</p>
+
+            <p>You can try to use a kind of prompt versioning/sticky note-ing extension. Not everybody uses VSCode, so you have to make it work across editors. Having this extension always running in the background looking for line changes is a bit messy, too.</p>
+
+            <p>You can try to rely solely on evals for documenting your prompts. Prompts perform a task, so you almost always have a way to test them. You can annotate some of the examples, explaining what the model misses in item A and why detail B matters when you're looking at rule C. You should do this, too, but it can be a messy process:</p>
+
+            <ul>
+                <li>You write a prompt for a task, you ship it, you're done.</li>
+                <li>A few weeks pass.</li>
+                <li>An engineer goes to work on your prompt, upgrading it to a new model. They see that your best accuracy is 94.5% precision, 89.5% recall on the linked eval set.</li>
+                <li>When they run the new model, they see 93.5% precision, 91% recall. This is an F1 score improvement: their work is done! Git push.</li>
+                <li>Precision drops 10 percentage points in production. The new engineer reverts their change and investigates.</li>
+                <li>Examining the diff between model runs, they realize that the false positive they introduced is one of the most prevalent types of content in production, whereas the improved recall came from rare cases, hurting production accuracy overall.</li>
+                <li>They make a prompt change fixing the issue and examine the diff again until they are ready to push to production, repeating the above steps as needed.</li>
+            </ul>
+
+            <p>Annotating your eval example with, "hey, this example is really common in production, make sure to get it right" would be nice. So would having two eval sets, one that covers a breadth of cases and another that matches the data distribution in production. And while you should strive to do both, neither is 100% feasible. If you got that prevalent example right the first time, you wouldn't even think to leave a comment on it.</p>
+
+            <p>If you had two eval sets, you would have to invest double the time into maintaining them—exactly like you would with a prompt. Not always feasible with time constraints.</p>
+
+            <p>What matters most is having a system that prevents you from repeating these mistakes. When the new engineer realizes what went wrong, they shouldn't fix it and forget it, they should leave documentation behind for the next person.</p>
+
+            <p>Whether you use documentation, comments, or both, this should live somewhere easily accessible and well-maintained.</p>
+
+            <p><strong>What does a good, well-maintained prompt look like?</strong> Embarrassingly enough, all of my prompts are confidential. If anyone would like to submit an example, I will look it over and share a good one here :)</p>
+        </div>
+
+        <!-- Large Footer -->
+        <div class="footer"></div>
+    </div>
+</body>
+</html>
+
