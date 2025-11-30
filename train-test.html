@@ -61,15 +61,15 @@ x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 
             <h2>2023: The butt model has been in production for 8 years.</h2>
 
-            <p>Another email comes in from the policy team in D.C. They’ve heard about LLMs and think it’s time to build a more “context-aware” model. They would like the model to understand whether there is sexually suggestive posing, sexual context, or artistic intent in the image.             </p>
+            <p>Another email: Policy has heard about LLMs and thinks it's time to build a more "context-aware" model. They would like the model to understand whether there is sexually suggestive posing, sexual context, or artistic intent in the image.</p>
 
             <p>You receive a 10 page policy doc. The PM cleans it up a bit and sends it to the BPO. The data is triple reviewed, you skim the labels, and they seem fine.</p>
 
-            <p>You make an LLM decision tree, one LLM call per policy section, and aggregate the results. Two months pass. You are stuck at 85% precision and recall, no matter how much prompt engineering and model tuning you do. You decide to try going back to a CNN and training it on the labels. It scores 83%.</p>
+            <p>You make an LLM decision tree, one LLM call per policy section, and aggregate the results. Two months pass. You are stuck at 85% precision and recall, no matter how much prompt engineering and model tuning you do. You try going back to a CNN, training it on the labels. It scores 83%.</p>
 
             <p>Your data science spidey-sense tingles. Something is wrong with the labels or the policy.</p>
 
-            <p>You email the policy team, sending them the dataset and results. A meeting is scheduled.</p>
+            <p>You email the policy team, sending them the dataset and results.</p>
 
             <p>The East Coast Metamates say they looked at 20 of the labels. 60% were good, 20% were wrong, 20% were edge cases they hadn’t thought of.</p>
 
@@ -83,9 +83,9 @@ x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 
             <p>It doesn't matter if the task is content policy, sales chatbots, legal chatbots, or AI automation in any other industry.</p>
 
-            <p><strong>Test Split:</strong> Any task complicated enough to require an LLM will need policy expert labels.<sup id="ref-1"><a href="#footnote-1">[1]</a></sup> To detect nudity, outsourced labels will do, but to enforce a 10 page adult policy, you need the expert. Experts have little time, and can't give you enough labels to run your high scale training runs. You can't isolate enough data for a test set without killing your training set size. On top of that, a 10 page policy comes with so much gray area that you can’t debug test set mistakes without looking at the test set results and model explanations.</p>
+            <p><strong>Test Split:</strong> Any task complicated enough to require an LLM will need policy expert labels.<sup id="ref-1"><a href="#footnote-1">[1]</a></sup> To detect nudity, outsourced labels will do, but to enforce a 10 page adult policy, you need the expert. Experts have little time: they can't give you enough labels to run your high scale training runs. You can't isolate enough data for a test set without killing your training set size. On top of that, a 10 page policy comes with so much gray area that you can’t debug test set mistakes without looking at the test set results and model explanations.</p>
 
-            <p><strong>Train Split:</strong> You no longer need a large, isolated training set because LLMs often don't need to be <em>trained</em> on data: they need to be given clear rules in natural language, and maybe 5-10 good examples.<sup id="ref-2"><a href="#footnote-2">[2]</a></sup> Today, accuracy improvements come from an engineer better understanding the classification rules, and better explaining it to the model, not from tuning hyperparameters or trying novel RL algorithms. Is a discrepancy between the LLM result and the ground truth due to the LLM’s mistake, the labeler’s mistake, or an ambiguous policy line? This requires unprecedented levels of communication between policy and engineering teams.</p>
+            <p><strong>Train Split:</strong> You no longer need a large, discrete training set because LLMs often don't need to be <em>trained</em> on data: they need to be given clear rules in natural language, and maybe 5-10 good examples.<sup id="ref-2"><a href="#footnote-2">[2]</a></sup> Today, accuracy improvements come from an engineer better understanding the classification rules and better explaining them to the model, not from tuning hyperparameters or trying novel RL algorithms. Is a discrepancy between the LLM result and the ground truth due to the LLM’s mistake, the labeler’s mistake, or an ambiguous policy line? This requires unprecedented levels of communication between policy and engineering teams.</p>
 
             <p><strong>Recommending a New Split:</strong> Don’t train the LLM on any of the dataset. Address the inevitable biases with evaluation on blind, unlabeled data.<sup id="ref-3"><a href="#footnote-3">[3]</a></sup> To understand why this is the best approach, we need to dive deeper into why the train-test split paradigm doesn't suffice.</p>
 
@@ -100,7 +100,7 @@ x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
             </ul>
             <p>Take these examples. Sexually suggestive? Artistic expression? Sufficient censorship?</p>
             <img src="/images/solar_power.webp" alt="Policy example" class="blog-image">
-            <p class="caption">Source: Lorde's album covers from Vice.com, where there is some debate on what is visible in both photos.</p>
+            <p class="caption">Source: Lorde's album covers from Vice.com, where you can find discussion of what is visible or not in each photo.</p>
 
             <p><strong>Most policy documents are not well-kept.</strong> A content policy is typically simplified, operationalized, and sent to outsourced teams to enforce. Edge cases and discrepancies found in India never make it back to policy teams in DC, so abstract rules are rarely pinned down.</p>
 
