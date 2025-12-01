@@ -22,6 +22,38 @@ body {
     padding: 0;
 }
 
+/* Blog Header */
+.blog-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 1.2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.blog-header a {
+    text-decoration: none;
+    color: #666;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+}
+
+.blog-header a:hover {
+    color: #1a1a1a;
+}
+
+.blog-header .post-date {
+    color: #666;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 400;
+}
+
 .title-section {
     width: 100%;
     min-height: 75vh;
@@ -195,6 +227,7 @@ ol li::marker {
     line-height: 1.7;
     margin-bottom: 1rem;
     color: #555;
+    word-break: break-word;
 }
 
 .footnote-item sup {
@@ -244,6 +277,10 @@ strong {
 
 /* Mobile Styles */
 @media screen and (max-width: 768px) {
+    .blog-header {
+        display: none;
+    }
+
     .title-section {
         min-height: auto;
         padding: 3rem 1rem;

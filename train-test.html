@@ -29,6 +29,12 @@
 </head>
 <body>
     <div class="blog-container">
+        <!-- Blog Header -->
+        <div class="blog-header">
+            <a href="/">Folio</a>
+            <span class="post-date">November 2025</span>
+        </div>
+
         <!-- Title Section -->
         <div class="title-section">
             <h1>The End of the Train-Test Split</h1>
@@ -111,7 +117,7 @@ x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 
             <p>In production, we see 15-20% false positive rates on BPOs. Half are attributable to human error, half to policy gray area.</p>
 
-            <p><strong>To resolve edge cases, labeling tasks require an expert's time.</strong> BPO agents can eyeball how much butt is visible, but struggle with what is "sexually suggestive." BPOs are minimum-wage workers in countries like India or the Phillipines, and may have different definitions of "sexual context" than the policy writers intended.</p>
+            <p><strong>To resolve edge cases, labeling tasks require an expert's time.</strong> BPO agents can eyeball how much butt is visible, but struggle with what is "sexually suggestive." BPOs are low-wage workers in countries like India or the Phillipines, and may have different definitions of "sexual context" than the policy writers intended. The costs of training them are often prohibitive at scale.</p>
 
             <p>Using in-house agents is not sufficient for training data, either, as small alignment issues in the dataset cause large issues in production: If internal agents are 95% accurate (pretty good), the ceiling for the LLM's performance is 95%. If the LLM gets 95% of <em>those</em> labels right, its accuracy will be 90%.</p>
 
