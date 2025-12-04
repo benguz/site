@@ -3,20 +3,20 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-    <title>Ben Guzovsky - Everything I've Shipped</title>
-    <meta name="title" content="Ben Guzovsky - Everything I've Shipped">
-    <meta name="description" content="I've run 100s of UX interviews, organized research in 15 states, & grown to 700k social views.">
+    <title>Ben Guzovsky - Content Policy, Risk, and Applied AI</title>
+    <meta name="title" content="Ben Guzovsky - Content Policy, Risk, and Applied AI">
+    <meta name="description" content="Writing and digital experiences for the future of trust & safety, fraud investigation, and user-generated content.">
     <meta property="og:url" content="https://folio.benguzovsky.com/">
     <meta property="og:image" content="https://folio.benguzovsky.com/examples/bizcard.png">
     <meta name="twitter:image" content="https://folio.benguzovsky.com/examples/bizcard.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:title" content="Ben Guzovsky - Everything I've Shipped">
-    <meta property="og:description" content="I've run 100s of UX interviews, organized research in 15 states, & grown to 700k social views.">
+    <meta property="og:title" content="Ben Guzovsky - Content Policy, Risk, and Applied AI">
+    <meta property="og:description" content="Writing and digital experiences for the future of trust & safety, fraud investigation, and user-generated content.">
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://folio.benguzovsky.com/">
-    <meta property="twitter:title" content="Ben Guzovsky - Everything I've Shipped">
-    <meta property="twitter:description" content="I've run 100s of UX interviews, organized research in 15 states, & grown to 700k social views.">
+    <meta property="twitter:title" content="Ben Guzovsky - Content Policy, Risk, and Applied AI">
+    <meta property="twitter:description" content="Writing and digital experiences for the future of trust & safety, fraud investigation, and user-generated content.">
     <link rel="shortcut icon" href="/favicon/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
@@ -204,7 +204,8 @@ span {
 
 button {
     position: absolute;
-    top: calc(60px + 40vh);
+    top: 50%;
+    transform: translateY(-50%);
     padding: 24px;
     border-radius: 24px;
     background-image: url('/images/Expand_right.svg');
@@ -224,8 +225,11 @@ button:hover {
 }
 #scrollLeft {
     left: 1em;
-    transform: rotate(180deg);
+    transform: translateY(-50%) rotate(180deg);
     display: none;
+}
+.examples-wrapper {
+    position: relative;
 }
 
 .description {
@@ -235,9 +239,6 @@ button:hover {
 
 
 @media screen and (max-width: 768px) {
-    button {
-        top: calc(200px + 21vh);
-    }
     .examples {
         height: 42vh;
     }
@@ -254,79 +255,10 @@ button:hover {
 </head>
 <body style="display: block;"> 
     <img src="images/overlay-right.svg" class="overlay-right hide-mobile" alt="overlay"/>
+    <h2 style="padding: 20px; padding-bottom: 0px; ">Content Policy, Risk, and Applied AI</h2>
 
-        <h1 style="padding: 20px; padding-bottom: 0px;">I ship full-stack, interactive interfaces fast.</h1>
-        <p style="padding: 20px; padding-bottom: 10px; padding-top: 0px;">I solo research, design, code, and scale apps to thousands of users.</p>
-        <div class="examples" id="examples">
-            
-            <div class="example-container" >
-                            <img class="example mobile" src="/examples/conflict.webp" height="93%" width="auto">
-                            <p class="caption" onclick="window.open('https://fix.school/doorstops/conflict')">fix.school</p></div>        
-                            <div class="example-container" >
-                                <img class="example pc" src="/examples/fathom.webp" height="93%" width="auto">
-                       <p class="caption" onclick="window.open('https://fathomcode.com')">fathomcode.com</p>
-                   </div>    
-                <div class="example-container" >
-                    <img class="example pc" src="/pics/pitch.png" height="93%" width="auto">
-           <p class="caption" onclick="window.open('https://www.figma.com/proto/9JP61YENFBHh3UUUfMNj3t/Pitch-Haiku?node-id=33-2&mode=design&t=hxKwPSoRDuQvYLbT-1')">Next Gen Admit Slides</p></div>               
-                <div class="example-container" >
-                    <img class="example mobile" src="/examples/dashboard.webp" height="93%" width="auto">
-                    <p class="caption"  onclick="window.open('https://fix.school/dashboard')">fix.school</p>
-                </div>                           
-        <div class="example-container" >
-                     <img class="example pc" src="/examples/blob.png" height="93%" width="auto">
-            <p class="caption"  onclick="window.open('https://loveisblob.com')">loveisblob.com</p>
-        </div>           
-        <div class="example-container" >
-            <img class="example pc" src="/examples/break.webp" height="93%" width="auto">
-            <p class="caption" onclick="window.open('https://fix.school/doorstops/10minutebreak')">10 minute break</p>
-        </div>    
-        <div class="example-container" >
-            <img class="example pc" src="/examples/search.png" height="93%" width="auto">
-            <p class="caption" onclick="window.open('https://fix.school/search')">fix.school</p>
-        </div>      
-        <div class="example-container" >
-            <img class="example mobile" src="/examples/referents.webp" height="93%" width="auto">
-           <p class="caption"  onclick="window.open('https://fix.school/doorstops/ref')">fix.school</p>
-       </div>   
-        <div class="example-container" >
-            <img class="example pc" src="/examples/promptoctopus.webp" height="93%" width="auto">
-           <p class="caption"  onclick="window.open('https://promptoctopus.com')">promptoctopus.com</p>
-       </div>               
-        <div class="example-container" >
-            <img class="example pc" src="/pics/chess.png" height="93%" width="auto">
-            <p class="caption" onclick="window.open('https://benguz.github.io/chess')">benguz.github.io/chess</p>
-        </div>               
-            <div class="example-container" >
-                <img class="example pc" src="/pics/policy.png" height="93%" width="auto">
-                <p class="caption" onclick="window.open('https://fix.school/school/flow')">fix.school</p></div>               
-            <div class="example-container" >
-                <img class="example pc" src="/pics/grades.png" height="93%" width="auto">
-                <p class="caption" onclick="window.open('https://fix.school/doorstops/grades')">fix.school</p>
-            </div>               
-<div class="example-container" >
-                     <img class="example pc" src="/pics/ah.png" height="93%" width="auto">
-            <p class="caption" onclick="window.open('https://allisonhartley.com')">allisonhartley.com</p></div>               
-<div class="example-container" >
-                     <img class="example pc" loading="lazy" src="/pics/potential.png" height="93%" width="auto">
-            <p class="caption" onclick="window.open('https://blog.benguzovsky.com/potential')">blog.benguzovsky.com/potential</p></div>
-        <!--        
-            <div class="example-container" >
-         <im            g class="example pc"
-<p class="ca            ption"></p></div>        sizes="(max-width: 1400px) 100vw, 1400px"
-        srcset="
-        /examples/search_medium.png 1138w,
-        /examples/search.png 1400w"
-        src="/examples/search.png"
-        alt="">
-         -->
-        </div>
-        <!-- preload and efficiently size images -->
-        <button id="scrollButton"></button>
-        <button id="scrollLeft"></button>
-
-        <p style="padding: 20px;">See what else I've shipped and what I'm currently working on <a href="https://benguzovsky.com">here</a>, or contact me at benjamin [dot] guzovsky [at] gmail [dot] com!</p>
-      <h2 style="padding-left: 20px">I write a lot, too.</h2>
+        <p class="description" style="padding: 20px; padding-top: 0px;">I'm currently Head of Policy at <a href="https://safetykit.com">safetykit.com</a>. See what I'm working on <a href="https://benguzovsky.com">here</a>, or contact me at benjamin [dot] guzovsky [at] gmail [dot] com!</p>
+      <h2 style="padding-left: 20px">Writing!</h2>
       <div class="experiences" style="padding-left: 20px">
         <div class="experience">
             <div class="left">
@@ -422,7 +354,80 @@ button:hover {
         </div>
     </div>
         <br><br><br>
-    </div>
+        <h1 style="padding: 20px; padding-bottom: 0px;">I ship full-stack, interactive interfaces fast.</h1>
+        <p style="padding: 20px; padding-bottom: 10px; padding-top: 0px;">I solo research, design, code, and scale apps to thousands of users.</p>
+        <div class="examples-wrapper">
+        <div class="examples" id="examples">
+            
+            <div class="example-container" >
+                            <img class="example mobile" src="/examples/conflict.webp" height="93%" width="auto">
+                            <p class="caption" onclick="window.open('https://fix.school/doorstops/conflict')">fix.school</p></div>        
+                            <div class="example-container" >
+                                <img class="example pc" src="/examples/fathom.webp" height="93%" width="auto">
+                       <p class="caption" onclick="window.open('https://fathomcode.com')">fathomcode.com</p>
+                   </div>    
+                <div class="example-container" >
+                    <img class="example pc" src="/pics/pitch.png" height="93%" width="auto">
+           <p class="caption" onclick="window.open('https://www.figma.com/proto/9JP61YENFBHh3UUUfMNj3t/Pitch-Haiku?node-id=33-2&mode=design&t=hxKwPSoRDuQvYLbT-1')">Next Gen Admit Slides</p></div>               
+                <div class="example-container" >
+                    <img class="example mobile" src="/examples/dashboard.webp" height="93%" width="auto">
+                    <p class="caption"  onclick="window.open('https://fix.school/dashboard')">fix.school</p>
+                </div>                           
+        <div class="example-container" >
+                     <img class="example pc" src="/examples/blob.png" height="93%" width="auto">
+            <p class="caption"  onclick="window.open('https://loveisblob.com')">loveisblob.com</p>
+        </div>           
+        <div class="example-container" >
+            <img class="example pc" src="/examples/break.webp" height="93%" width="auto">
+            <p class="caption" onclick="window.open('https://fix.school/doorstops/10minutebreak')">10 minute break</p>
+        </div>    
+        <div class="example-container" >
+            <img class="example pc" src="/examples/search.png" height="93%" width="auto">
+            <p class="caption" onclick="window.open('https://fix.school/search')">fix.school</p>
+        </div>      
+        <div class="example-container" >
+            <img class="example mobile" src="/examples/referents.webp" height="93%" width="auto">
+           <p class="caption"  onclick="window.open('https://fix.school/doorstops/ref')">fix.school</p>
+       </div>   
+        <div class="example-container" >
+            <img class="example pc" src="/examples/promptoctopus.webp" height="93%" width="auto">
+           <p class="caption"  onclick="window.open('https://promptoctopus.com')">promptoctopus.com</p>
+       </div>               
+        <div class="example-container" >
+            <img class="example pc" src="/pics/chess.png" height="93%" width="auto">
+            <p class="caption" onclick="window.open('https://benguz.github.io/chess')">benguz.github.io/chess</p>
+        </div>               
+            <div class="example-container" >
+                <img class="example pc" src="/pics/policy.png" height="93%" width="auto">
+                <p class="caption" onclick="window.open('https://fix.school/school/flow')">fix.school</p></div>               
+            <div class="example-container" >
+                <img class="example pc" src="/pics/grades.png" height="93%" width="auto">
+                <p class="caption" onclick="window.open('https://fix.school/doorstops/grades')">fix.school</p>
+            </div>               
+<div class="example-container" >
+                     <img class="example pc" src="/pics/ah.png" height="93%" width="auto">
+            <p class="caption" onclick="window.open('https://allisonhartley.com')">allisonhartley.com</p></div>               
+<div class="example-container" >
+                     <img class="example pc" loading="lazy" src="/pics/potential.png" height="93%" width="auto">
+            <p class="caption" onclick="window.open('https://blog.benguzovsky.com/potential')">blog.benguzovsky.com/potential</p></div>
+        <!--        
+            <div class="example-container" >
+         <im            g class="example pc"
+<p class="ca            ption"></p></div>        sizes="(max-width: 1400px) 100vw, 1400px"
+        srcset="
+        /examples/search_medium.png 1138w,
+        /examples/search.png 1400w"
+        src="/examples/search.png"
+        alt="">
+         -->
+        </div>
+        <!-- preload and efficiently size images -->
+        <button id="scrollButton"></button>
+        <button id="scrollLeft"></button>
+        </div>
+
+
+        <br><br><br>
       <script>
         document.addEventListener('DOMContentLoaded', (event) => {
             const scrollContainer = document.getElementById('examples');
