@@ -187,10 +187,10 @@ x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
             <!-- Footnotes -->
             <div class="footnotes">
                 <div class="footnote-item" id="footnote-1">
-                    <sup><a href="#ref-1">[1]</a></sup> A policy expert may literally be someone with “Policy” in their title, or it may be a lawyer, accountant, sales rep, or anyone else documenting a business process that needs to be automated.
+                    <sup><a href="#ref-1">[1]</a></sup> A policy expert may literally be someone with "Policy" in their title, or it may be a lawyer, accountant, sales rep, or anyone else documenting a business process that needs to be automated.
                 </div>
                 <div class="footnote-item" id="footnote-2">
-                    <sup><a href="#ref-2">[2]</a></sup> Note that LLMs can be trained or tuned on specific datasets for classification tasks, especially reasoning models, but these tend to be much smaller, higher quality labels rather than scaled, medium quality labels. <i>Even in these cases, an engineer must spend a large amount of time looking at “test set” data and labels.</i>
+                    <sup><a href="#ref-2">[2]</a></sup> Note that LLMs can be trained or tuned on specific datasets for classification tasks, especially reasoning models, but these tend to be much smaller, higher quality labels rather than scaled, medium quality labels. <i>Even in these cases, an engineer must spend a large amount of time looking at "test set" data and labels.</i>
                 </div>
                 <div class="footnote-item" id="footnote-3">
                     <sup><a href="#ref-3">[3]</a></sup> After several runs of this prompt-based iteration following by QA on unseen, production data, you may have enough data for real LLM training on a train-test split.
@@ -202,6 +202,159 @@ x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
                     <sup><a href="#ref-5">[5]</a></sup> Conversely, fixing mistakes by training the LLM on your training set (<em>a la</em> traditional ML) won't work, as the LLM can't reliably learn features that only exist in the test set.
                 </div>
             </div>
+
+            <!-- Mailing List -->
+            <div class="mailing-list" id="mailing-list">
+                <h3>Get the latest in Risk, Trust & Safety, and Applied AI</h3>
+                <p class="form-subtitle">Expect ~1 email every 2 weeks, unsubscribe any time.</p>
+                
+                <form id="subscribe-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your name">
+                    </div>
+                    
+                    <div class="form-group" id="email-group">
+                        <label for="email">Email <span style="color: #e74c3c;">*</span></label>
+                        <input type="email" id="email" name="email" required placeholder="you@example.com">
+                        <div class="form-error" id="email-error">Please enter a valid email address</div>
+                    </div>
+                    
+                    <div class="role-group">
+                        <label>Role</label>
+                        <p class="form-subtitle" style="margin-bottom: 0.5rem;">Feel free to provide a more detailed description in "Other"!</p>
+                        <div class="role-options">
+                            <div class="role-option">
+                                <input type="radio" id="role-ts" name="role" value="Trust & Safety">
+                                <label for="role-ts">Trust & Safety</label>
+                            </div>
+                            <div class="role-option">
+                                <input type="radio" id="role-rf" name="role" value="Risk & Fraud">
+                                <label for="role-rf">Risk & Fraud</label>
+                            </div>
+                            <div class="role-option">
+                                <input type="radio" id="role-eng" name="role" value="Engineering">
+                                <label for="role-eng">Engineering</label>
+                            </div>
+                            <div class="role-option">
+                                <input type="radio" id="role-other" name="role" value="Other">
+                                <label for="role-other">Other</label>
+                            </div>
+                        </div>
+                        <div class="other-input" id="other-input" style="display: none;">
+                            <input type="text" id="other-role" name="other-role" placeholder="Your role or title">
+                        </div>
+                    </div>
+                    
+                    <button type="submit">Subscribe</button>
+                </form>
+                
+                <div class="success-message">
+                    Thanks for subscribing! You'll hear from me soon.
+                </div>
+            </div>
+
+            <script>
+            (function() {
+                const FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLScZcmzjgF5ZCyn3sEH3hA_cuCLuzMZCdP2GH5iDoI4FArnAIg/formResponse';
+                const ENTRY_NAME = 'entry.1011076495';
+                const ENTRY_EMAIL = 'entry.1757285392';
+                const ENTRY_ROLE = 'entry.1117863278';
+                const ENTRY_OTHER = 'entry.1117863278.other_option_response';
+
+                const form = document.getElementById('subscribe-form');
+                const container = document.getElementById('mailing-list');
+                const otherRadio = document.getElementById('role-other');
+                const otherInput = document.getElementById('other-input');
+                const emailInput = document.getElementById('email');
+                const emailGroup = document.getElementById('email-group');
+
+                // Email validation
+                function isValidEmail(email) {
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    return emailRegex.test(email);
+                }
+
+                function validateEmail() {
+                    const email = emailInput.value.trim();
+                    if (!email || !isValidEmail(email)) {
+                        emailGroup.classList.add('error');
+                        return false;
+                    }
+                    emailGroup.classList.remove('error');
+                    return true;
+                }
+
+                emailInput.addEventListener('blur', validateEmail);
+                emailInput.addEventListener('input', function() {
+                    if (emailGroup.classList.contains('error')) {
+                        validateEmail();
+                    }
+                });
+
+                // Show/hide other input
+                document.querySelectorAll('input[name="role"]').forEach(radio => {
+                    radio.addEventListener('change', function() {
+                        otherInput.style.display = this.value === 'Other' ? 'block' : 'none';
+                    });
+                });
+
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+
+                    if (!validateEmail()) {
+                        emailInput.focus();
+                        return;
+                    }
+
+                    const name = document.getElementById('name').value;
+                    const email = emailInput.value.trim();
+                    const roleEl = document.querySelector('input[name="role"]:checked');
+                    const role = roleEl ? roleEl.value : '';
+                    const otherRole = document.getElementById('other-role').value;
+
+                    const formData = new FormData();
+                    formData.append(ENTRY_NAME, name);
+                    formData.append(ENTRY_EMAIL, email);
+                    
+                    if (role === 'Other' && otherRole) {
+                        formData.append(ENTRY_ROLE, '__other_option__');
+                        formData.append(ENTRY_OTHER, otherRole);
+                    } else if (role) {
+                        formData.append(ENTRY_ROLE, role);
+                    }
+
+                    // Submit via hidden iframe to avoid CORS issues
+                    const iframe = document.createElement('iframe');
+                    iframe.name = 'hidden-form-iframe';
+                    iframe.style.display = 'none';
+                    document.body.appendChild(iframe);
+
+                    const tempForm = document.createElement('form');
+                    tempForm.method = 'POST';
+                    tempForm.action = FORM_ACTION;
+                    tempForm.target = 'hidden-form-iframe';
+
+                    for (const [key, value] of formData.entries()) {
+                        const input = document.createElement('input');
+                        input.type = 'hidden';
+                        input.name = key;
+                        input.value = value;
+                        tempForm.appendChild(input);
+                    }
+
+                    document.body.appendChild(tempForm);
+                    tempForm.submit();
+
+                    // Show success message
+                    setTimeout(() => {
+                        container.classList.add('submitted');
+                        document.body.removeChild(tempForm);
+                        document.body.removeChild(iframe);
+                    }, 500);
+                });
+            })();
+            </script>
         </div>
 
         <!-- Large Footer -->

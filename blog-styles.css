@@ -399,3 +399,175 @@ strong {
     }
 }
 
+/* Mailing List Form */
+.mailing-list {
+    margin-top: 4rem;
+    padding: 2.5rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+}
+
+.mailing-list h3 {
+    font-family: 'Lora', serif;
+    font-size: 1.5rem;
+    margin: 0 0 0.5rem 0;
+    color: #1a1a1a;
+}
+
+.mailing-list .form-subtitle {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.mailing-list .form-group {
+    margin-bottom: 1.25rem;
+}
+
+.mailing-list label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #2a2a2a;
+    margin-bottom: 0.4rem;
+}
+
+.mailing-list input[type="text"],
+.mailing-list input[type="email"] {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: #fff;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.mailing-list input[type="text"]:focus,
+.mailing-list input[type="email"]:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.15);
+}
+
+.mailing-list .role-group {
+    margin-bottom: 1.5rem;
+}
+
+.mailing-list .role-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+}
+
+.mailing-list .role-option {
+    position: relative;
+}
+
+.mailing-list .role-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.mailing-list .role-option label {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #555;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin: 0;
+}
+
+.mailing-list .role-option input[type="radio"]:checked + label {
+    background: #4a90e2;
+    color: #fff;
+    border-color: #4a90e2;
+}
+
+.mailing-list .role-option label:hover {
+    border-color: #4a90e2;
+}
+
+.mailing-list .other-input {
+    margin-top: 0.75rem;
+}
+
+.mailing-list .other-input input {
+    max-width: 250px;
+}
+
+.mailing-list button[type="submit"] {
+    padding: 0.85rem 2rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff;
+    background: #4a90e2;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.mailing-list button[type="submit"]:hover {
+    background: #3a7bc8;
+}
+
+.mailing-list button[type="submit"]:active {
+    transform: scale(0.98);
+}
+
+.mailing-list .form-note {
+    font-size: 0.85rem;
+    color: #888;
+    margin-top: 1rem;
+}
+
+.mailing-list .success-message {
+    padding: 1rem;
+    background: #d4edda;
+    border: 1px solid #c3e6cb;
+    border-radius: 6px;
+    color: #155724;
+    display: none;
+}
+
+.mailing-list.submitted .success-message {
+    display: block;
+}
+
+.mailing-list.submitted form {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .mailing-list {
+        padding: 1.5rem;
+        margin-top: 3rem;
+    }
+
+    .mailing-list h3 {
+        font-size: 1.25rem;
+    }
+
+    .mailing-list .role-options {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .mailing-list .role-option label {
+        display: block;
+        text-align: center;
+    }
+}
+
