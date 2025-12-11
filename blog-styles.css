@@ -550,6 +550,25 @@ strong {
     display: none;
 }
 
+.mailing-list .form-error {
+    font-size: 0.85rem;
+    color: #e74c3c;
+    margin-top: 0.35rem;
+    display: none;
+}
+
+.mailing-list .form-group.error input {
+    border-color: #e74c3c;
+}
+
+.mailing-list .form-group.error input:focus {
+    box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.15);
+}
+
+.mailing-list .form-group.error .form-error {
+    display: block;
+}
+
 @media screen and (max-width: 768px) {
     .mailing-list {
         padding: 1.5rem;
