@@ -9,10 +9,10 @@
     
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://benguzovsky.com/train-test.html">
-    <meta property="og:title" content="The End of the Train-Test Split">
+    <meta property="og:url" content="https://benguzovsky.com/eng-ops.html">
+    <meta property="og:title" content="The End of the Eng-Ops Split">
     <meta property="og:description" content="The eng-ops split does not work for tasks at the frontier of LLM capability.">
-    <meta property="og:image" content="https://benguzovsky.com/images/train_test_og.webp">
+    <meta property="og:image" content="https://benguzovsky.com/images/splitscreen.webp">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     
@@ -21,7 +21,7 @@
     <meta property="twitter:url" content="https://benguzovsky.com/train-test.html">
     <meta property="twitter:title" content="The End of the Train-Test Split">
     <meta property="twitter:description" content="The eng-ops split does not work for tasks at the frontier of LLM capability.">
-    <meta property="twitter:image" content="https://benguzovsky.com/images/train_test_og.webp">
+    <meta property="twitter:image" content="https://benguzovsky.com/images/splitscreen.webp">
     
     <link rel="shortcut icon" href="/favicon/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
@@ -98,11 +98,15 @@
 
             <h3><strong>The eng-ops split does not work for tasks at the frontier of LLM capability.</strong></h3>
 
-            <p>Physical and organizational distance between engineering and policy may have worked for simple machine learning, but creates insurmountable challenges for tasks at the frontier of LLM capability, where engineering and policy decision-making are highly coupled. It doesn't matter if the task is content policy, sales chatbots, legal chatbots, or AI automation in any other industry.</p>
+            <p>Physical and organizational distance between engineering and other teams may have worked for simple machine learning, but creates insurmountable challenges for tasks at the frontier of LLM capability, where engineering and policy decision-making are highly coupled. It doesn't matter if the task is content policy, sales chatbots, legal chatbots, or AI automation in any other industry.</p>
 
             <p><strong>Operations, Product, and Policy must be involved in LLM integration:</strong> Any task complicated enough to require an LLM will need policy expert labels.<sup id="ref-1"><a href="#footnote-1">[1]</a></sup> To detect nudity, outsourced labels will do, and an engineer can eyeball results without much trouble. To enforce a 10 page adult policy, a policy expert must label the data, look at results, and collaborate with engineers to determine the best AI integration.</p>
 
-            <p>Is a discrepancy between the LLM result and the ground truth due to the LLM's mistake, the labeler's mistake, or an ambiguous policy line? Resolving these questions — not only explaining policy rules, but arbitrating new edge cases — is the primary blocker for LLM integration, not tuning hyperparameters or trying novel RL algorithms.<sup id="ref-2"><a href="#footnote-2">[2]</a></sup> Policy experts have little time, but LLM integration requires these unprecedented levels of communication.</p>
+            <p>Is a discrepancy between the LLM result and the ground truth due to the LLM's mistake, the labeler's mistake, or an ambiguous policy line? Resolving these questions is the primary blocker for LLM integration, not tuning hyperparameters or trying novel RL algorithms.<sup id="ref-2"><a href="#footnote-2">[2]</a></sup></p>
+
+            <div class="article-callout">
+                <p>Engineer? There's a version of this article for you: <a href="/train-test.html">The End of the Train-Test Split</a></p>
+            </div>
 
             <h3>Core problems with complex classification tasks</h3>
 
@@ -147,7 +151,7 @@
 
             <p>This is a paradigm shift that many machine learning teams, and enterprises as a whole, have not yet embraced. It requires a complete change in how we approach classification tasks.</p>
 
-            <p><strong>If this is the road to automation, is it even worthwhile?</strong> The process described above, while arduous, is the shortest route to consistent policy enforcement to date. Before LLMs, running a successful quality assurance program would be prohibitively expensive. Retraining human agents takes far longer than retraining LLMs. Policy experts have historically never been owners in quality assurance processes, but now can be.</p>
+            <p><strong>If this is the road to automation, is it even worthwhile?</strong> The process described above, while arduous, is the shortest route to consistent policy enforcement to date. Before LLMs, running a successful quality assurance program would be prohibitively expensive. Retraining human agents takes far longer than retraining LLMs. Policy experts have historically never been owners in quality assurance processes, but can be now. T&S policy enforcement decisions have often been left to human discretion, causing inconsistency: aligning on a robust policy is higher leverage than ever before.</p>
 
             <p>To save a little time, an in-house human agent might do a first review of the results, then a policy expert can review only the discrepancies. We find this tradeoff works well in production.</p>
 

@@ -12,7 +12,7 @@
     <meta property="og:url" content="https://benguzovsky.com/train-test.html">
     <meta property="og:title" content="The End of the Train-Test Split">
     <meta property="og:description" content="The train-test split does not work for classification tasks at the frontier of LLM capability.">
-    <meta property="og:image" content="https://benguzovsky.com/images/train_test_og.webp">
+    <meta property="og:image" content="https://benguzovsky.com/images/splitscreen.webp">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     
@@ -21,7 +21,7 @@
     <meta property="twitter:url" content="https://benguzovsky.com/train-test.html">
     <meta property="twitter:title" content="The End of the Train-Test Split">
     <meta property="twitter:description" content="The train-test split does not work for classification tasks at the frontier of LLM capability.">
-    <meta property="twitter:image" content="https://benguzovsky.com/images/train_test_og.webp">
+    <meta property="twitter:image" content="https://benguzovsky.com/images/splitscreen.webp">
     
     <link rel="shortcut icon" href="/favicon/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
@@ -116,6 +116,12 @@ x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
             <p><strong>Train Split:</strong> You no longer need a large, discrete training set because LLMs often don't need to be <em>trained</em> on data: they need to be given clear rules in natural language, and maybe 5-10 good examples.<sup id="ref-2"><a href="#footnote-2">[2]</a></sup> Today, accuracy improvements come from an engineer better understanding the classification rules and better explaining them to the model, not from tuning hyperparameters or trying novel RL algorithms. Is a discrepancy between the LLM result and the ground truth due to the LLM’s mistake, the labeler’s mistake, or an ambiguous policy line? This requires unprecedented levels of communication between policy and engineering teams.</p>
 
             <p><strong>Recommending a New Split:</strong> Don’t train the LLM on any of the dataset. Address the inevitable biases with evaluation on blind, unlabeled data.<sup id="ref-3"><a href="#footnote-3">[3]</a></sup> To understand why this is the best approach, we need to dive deeper into why the train-test split paradigm doesn't suffice.</p>
+
+
+            <div class="article-callout">
+                <p>Policy or operations leader? There's a version of this article for you: <a href="/eng-ops.html">The End of the Eng-Ops Split</a></p>
+            </div>
+
 
             <h3>Core problems with complex classification tasks</h3>
 
