@@ -150,6 +150,26 @@ h1 {
     margin-bottom: 0.5rem;
 }
 
+/* Article Callout */
+.article-callout {
+    margin: 2rem 0;
+    padding: 1.25rem 1.5rem;
+    background: linear-gradient(135deg, #f0f7ff 0%, #fff 100%);
+    border-left: 4px solid #4a90e2;
+    border-radius: 0 8px 8px 0;
+}
+
+.article-callout p {
+    margin: 0;
+    font-size: 1rem;
+    color: #444;
+}
+
+.article-callout a {
+    color: #4a90e2;
+    font-weight: 500;
+}
+
 /* Lists */
 ul, ol {
     margin: 1.5rem 0;
